@@ -1,28 +1,28 @@
 // Define Variables
 var levels = {};
-levels.st		= undefined;
-levels.dx		= undefined;
-levels.iq		= undefined;
-levels.ht		= undefined;
-levels.hp		= undefined;
-levels.will	    = undefined;
-levels.per	    = undefined;
-levels.fp		= undefined;
-levels.bs		= undefined;
-levels.bm		= undefined;
-levels.dg		= undefined;
-levels.bl		= undefined;
+levels.st = undefined;
+levels.dx = undefined;
+levels.iq = undefined;
+levels.ht = undefined;
+levels.hp = undefined;
+levels.will = undefined;
+levels.per = undefined;
+levels.fp = undefined;
+levels.bs = undefined;
+levels.bm = undefined;
+levels.dg = undefined;
+levels.bl = undefined;
 
-var fieldnr 	= {};
-fieldnr.attr	= 4;
-fieldnr.attr2	= 10;
-fieldnr.adv 	= 1;
-fieldnr.perk 	= 1;
-fieldnr.disadv	= 1;
-fieldnr.quirk 	= 1;
-fieldnr.skill 	= 1;
-fieldnr.spell 	= 1;
-fieldnr.equip	= 1;
+var fieldnr = {};
+fieldnr.attr = 4;
+fieldnr.attr2 = 10;
+fieldnr.adv = 1;
+fieldnr.perk = 1;
+fieldnr.disadv = 1;
+fieldnr.quirk = 1;
+fieldnr.skill = 1;
+fieldnr.spell = 1;
+fieldnr.equip = 1;
 
 var localStorageInput = "";
 
@@ -30,18 +30,18 @@ var localStorageInput = "";
 
 // fieldnr updaten
 function getFieldnr(category) {
-	fieldnr.category = document.getElementById(category+"-dynamic").children.length + 1;
+	fieldnr.category = document.getElementById(category + "-dynamic").children.length + 1;
 	return fieldnr.category;
 }
 
 function setNewFieldnr() {
-	fieldnr.adv 	= getFieldnr("adv");
-	fieldnr.perk 	= getFieldnr("perk");
-	fieldnr.disadv 	= getFieldnr("disadv");
-	fieldnr.quirk 	= getFieldnr("quirk");
-	fieldnr.skill 	= getFieldnr("skill");
-	fieldnr.spell 	= getFieldnr("spell");
-	fieldnr.equip 	= getFieldnr("equip");
+	fieldnr.adv = getFieldnr("adv");
+	fieldnr.perk = getFieldnr("perk");
+	fieldnr.disadv = getFieldnr("disadv");
+	fieldnr.quirk = getFieldnr("quirk");
+	fieldnr.skill = getFieldnr("skill");
+	fieldnr.spell = getFieldnr("spell");
+	fieldnr.equip = getFieldnr("equip");
 }
 
 
@@ -58,16 +58,16 @@ function toggleComments() {
 }
 
 function addComment(event) {
-	var br 				= document.createElement("br");
-	var textarea		= document.createElement("textarea");
-	br.className 		= "comment";
-	textarea.className 	= "comment";
+	var br = document.createElement("br");
+	var textarea = document.createElement("textarea");
+	br.className = "comment";
+	textarea.className = "comment";
 	event.target.parentNode.appendChild(br);
 	event.target.parentNode.appendChild(textarea);
 }
 
 function removeComment(event) {
-	while (event.target.parentNode.getElementsByClassName("comment").length > 0){
+	while (event.target.parentNode.getElementsByClassName("comment").length > 0) {
 		event.target.parentNode.removeChild(event.target.parentNode.lastChild);
 	}
 }
@@ -77,185 +77,185 @@ function removeComment(event) {
 // ADD AND REMOVE INPUT FIELDS
 
 function removeFields(category) {
-	var count		= document.getElementById(category+"-dynamic").children.length -1;
-	var list 		= document.getElementById(category+"-dynamic");
+	var count = document.getElementById(category + "-dynamic").children.length - 1;
+	var list = document.getElementById(category + "-dynamic");
 	list.removeChild(list.childNodes[count]); /*lastChild?*/
 	setNewFieldnr();
 }
 
 function addFields(category, min, max) {
-	var count				= document.getElementById(category+"-dynamic").children.length + 1;
+	var count = document.getElementById(category + "-dynamic").children.length + 1;
 
-	var divRow 				= document.createElement("div");
-	divRow.className		= "row";
+	var divRow = document.createElement("div");
+	divRow.className = "row";
 
-	var divName				= document.createElement("div");
-	divName.className		= "col-xs-4";
+	var divName = document.createElement("div");
+	divName.className = "col-xs-4";
 
-	var inputName			= document.createElement("input");
-	inputName.type 			= "text";
-	inputName.className 	= "name";
-	inputName.id 			= category+"-name"+count;
-	inputName.placeholder 	= "Name/Description";
+	var inputName = document.createElement("input");
+	inputName.type = "text";
+	inputName.className = "name";
+	inputName.id = category + "-name" + count;
+	inputName.placeholder = "Name/Description";
 
-	var divCost				= document.createElement("div");
-	divCost.className		= "col-xs-1";
+	var divCost = document.createElement("div");
+	divCost.className = "col-xs-1";
 
-	var inputCost			= document.createElement("input");
-	inputCost.type 			= "number";
-	inputCost.min 			= min;
-	inputCost.max 			= max;
-	inputCost.step 			= "1";
-	inputCost.className 	= "cost";
-	inputCost.id 			= category+"-cost"+count;
+	var inputCost = document.createElement("input");
+	inputCost.type = "number";
+	inputCost.min = min;
+	inputCost.max = max;
+	inputCost.step = "1";
+	inputCost.className = "cost";
+	inputCost.id = category + "-cost" + count;
 
 
 	divRow.appendChild(divName);
-		divName.appendChild(inputName);
+	divName.appendChild(inputName);
 
 	divRow.appendChild(divCost);
-		divCost.appendChild(inputCost);
+	divCost.appendChild(inputCost);
 
-	document.getElementById(category+"-dynamic").appendChild(divRow);
+	document.getElementById(category + "-dynamic").appendChild(divRow);
 
 	setNewFieldnr();
 }
 
 
 function addFieldsSkill() {
-	var count				= document.getElementById("skill-dynamic").children.length + 1;
+	var count = document.getElementById("skill-dynamic").children.length + 1;
 
-	var divRow 				= document.createElement("div");
-	divRow.className		= "row";
-
-
-	var divName				= document.createElement("div");
-	divName.className		= "col-xs-4";
-
-	var inputName			= document.createElement("input");
-	inputName.type 			= "text";
-	inputName.className 	= "name";
-	inputName.id 			= "skill-name"+count;
-	inputName.placeholder 	= "Name/Description";
+	var divRow = document.createElement("div");
+	divRow.className = "row";
 
 
-	var divType				= document.createElement("div");
-	divType.className		= "col-xs-2";
+	var divName = document.createElement("div");
+	divName.className = "col-xs-4";
 
-	var selectType			= document.createElement("select");
-	selectType.className 	= "skill-type";
-	selectType.id 			= "skill-type"+count;
-
-	var optionBlankT		= document.createElement("option");
-	optionBlankT.value 		= "";
-	var textBlankT			= document.createTextNode("");
-
-	var optionDX			= document.createElement("option");
-	optionDX.value 			= "dx";
-	var textDX				= document.createTextNode("DX");
-
-	var optionIQ			= document.createElement("option");
-	optionIQ.value 			= "iq";
-	var textIQ				= document.createTextNode("IQ");
-
-	var optionWill			= document.createElement("option");
-	optionWill.value 		= "will";
-	var textWill			= document.createTextNode("Will");
-
-	var optionPer			= document.createElement("option");
-	optionPer.value 		= "per";
-	var textPer				= document.createTextNode("Per");
-
-	var optionHT			= document.createElement("option");
-	optionHT.value 			= "ht";
-	var textHT				= document.createTextNode("HT");
+	var inputName = document.createElement("input");
+	inputName.type = "text";
+	inputName.className = "name";
+	inputName.id = "skill-name" + count;
+	inputName.placeholder = "Name/Description";
 
 
-	var divDifficulty		= document.createElement("div");
-	divDifficulty.className	= "col-xs-2";
+	var divType = document.createElement("div");
+	divType.className = "col-xs-2";
 
-	var selectDifficulty		= document.createElement("select");
-	selectDifficulty.className 	= "skill-difficulty";
-	selectDifficulty.id 		= "skill-difficulty"+count;
+	var selectType = document.createElement("select");
+	selectType.className = "skill-type";
+	selectType.id = "skill-type" + count;
 
-	var optionBlankD	    = document.createElement("option");
-	optionBlankD.value 		= "";
-	var textBlankD			= document.createTextNode("");
+	var optionBlankT = document.createElement("option");
+	optionBlankT.value = "";
+	var textBlankT = document.createTextNode("");
 
-	var optionEasy			= document.createElement("option");
-	optionEasy.value 		= "easy";
-	var textEasy		    = document.createTextNode("Easy");
+	var optionDX = document.createElement("option");
+	optionDX.value = "dx";
+	var textDX = document.createTextNode("DX");
 
-	var optionAverage		= document.createElement("option");
-	optionAverage.value 	= "average";
-	var textAverage			= document.createTextNode("Average");
+	var optionIQ = document.createElement("option");
+	optionIQ.value = "iq";
+	var textIQ = document.createTextNode("IQ");
 
-	var optionHard			= document.createElement("option");
-	optionHard.value 		= "hard";
-	var textHard		    = document.createTextNode("Hard");
+	var optionWill = document.createElement("option");
+	optionWill.value = "will";
+	var textWill = document.createTextNode("Will");
 
-	var optionVeryHard		= document.createElement("option");
-	optionVeryHard.value 	= "veryhard";
-	var textVeryHard	    = document.createTextNode("Very Hard");
+	var optionPer = document.createElement("option");
+	optionPer.value = "per";
+	var textPer = document.createTextNode("Per");
 
-
-	var divLevel			= document.createElement("div");
-	divLevel.className		= "col-xs-1";
-
-	var inputLevel			= document.createElement("input");
-	inputLevel.type 		= "number";
-	inputLevel.min 			= "0";
-	inputLevel.max 			= "200";
-	inputLevel.step 		= "1";
-	inputLevel.className 	= "level";
-	inputLevel.id 			= "skill-level"+count;
+	var optionHT = document.createElement("option");
+	optionHT.value = "ht";
+	var textHT = document.createTextNode("HT");
 
 
-	var divCost				= document.createElement("div");
-	divCost.className		= "col-xs-1";
+	var divDifficulty = document.createElement("div");
+	divDifficulty.className = "col-xs-2";
 
-	var inputCost			= document.createElement("input");
-	inputCost.type 			= "number";
-	inputCost.className 	= "cost";
-	inputCost.id 			= "skill-cost"+count;
-	inputCost.disabled 		= true;
+	var selectDifficulty = document.createElement("select");
+	selectDifficulty.className = "skill-difficulty";
+	selectDifficulty.id = "skill-difficulty" + count;
+
+	var optionBlankD = document.createElement("option");
+	optionBlankD.value = "";
+	var textBlankD = document.createTextNode("");
+
+	var optionEasy = document.createElement("option");
+	optionEasy.value = "easy";
+	var textEasy = document.createTextNode("Easy");
+
+	var optionAverage = document.createElement("option");
+	optionAverage.value = "average";
+	var textAverage = document.createTextNode("Average");
+
+	var optionHard = document.createElement("option");
+	optionHard.value = "hard";
+	var textHard = document.createTextNode("Hard");
+
+	var optionVeryHard = document.createElement("option");
+	optionVeryHard.value = "veryhard";
+	var textVeryHard = document.createTextNode("Very Hard");
+
+
+	var divLevel = document.createElement("div");
+	divLevel.className = "col-xs-1";
+
+	var inputLevel = document.createElement("input");
+	inputLevel.type = "number";
+	inputLevel.min = "0";
+	inputLevel.max = "200";
+	inputLevel.step = "1";
+	inputLevel.className = "level";
+	inputLevel.id = "skill-level" + count;
+
+
+	var divCost = document.createElement("div");
+	divCost.className = "col-xs-1";
+
+	var inputCost = document.createElement("input");
+	inputCost.type = "number";
+	inputCost.className = "cost";
+	inputCost.id = "skill-cost" + count;
+	inputCost.disabled = true;
 
 	divRow.appendChild(divName);
-		divName.appendChild(inputName);
+	divName.appendChild(inputName);
 
 	divRow.appendChild(divType);
-		divType.appendChild(selectType);
-			selectType.appendChild(optionBlankT);
-				optionBlankT.appendChild(textBlankT);
-			selectType.appendChild(optionDX);
-				optionDX.appendChild(textDX);
-			selectType.appendChild(optionIQ);
-				optionIQ.appendChild(textIQ);
-			selectType.appendChild(optionWill);
-				optionWill.appendChild(textWill);
-			selectType.appendChild(optionPer);
-				optionPer.appendChild(textPer);
-			selectType.appendChild(optionHT);
-				optionHT.appendChild(textHT);
+	divType.appendChild(selectType);
+	selectType.appendChild(optionBlankT);
+	optionBlankT.appendChild(textBlankT);
+	selectType.appendChild(optionDX);
+	optionDX.appendChild(textDX);
+	selectType.appendChild(optionIQ);
+	optionIQ.appendChild(textIQ);
+	selectType.appendChild(optionWill);
+	optionWill.appendChild(textWill);
+	selectType.appendChild(optionPer);
+	optionPer.appendChild(textPer);
+	selectType.appendChild(optionHT);
+	optionHT.appendChild(textHT);
 
 	divRow.appendChild(divDifficulty);
-		divDifficulty.appendChild(selectDifficulty);
-			selectDifficulty.appendChild(optionBlankD);
-				optionBlankD.appendChild(textBlankD);
-			selectDifficulty.appendChild(optionEasy);
-				optionEasy.appendChild(textEasy);
-			selectDifficulty.appendChild(optionAverage);
-				optionAverage.appendChild(textAverage);
-			selectDifficulty.appendChild(optionHard);
-				optionHard.appendChild(textHard);
-			selectDifficulty.appendChild(optionVeryHard);
-				optionVeryHard.appendChild(textVeryHard);
+	divDifficulty.appendChild(selectDifficulty);
+	selectDifficulty.appendChild(optionBlankD);
+	optionBlankD.appendChild(textBlankD);
+	selectDifficulty.appendChild(optionEasy);
+	optionEasy.appendChild(textEasy);
+	selectDifficulty.appendChild(optionAverage);
+	optionAverage.appendChild(textAverage);
+	selectDifficulty.appendChild(optionHard);
+	optionHard.appendChild(textHard);
+	selectDifficulty.appendChild(optionVeryHard);
+	optionVeryHard.appendChild(textVeryHard);
 
 	divRow.appendChild(divLevel);
-		divLevel.appendChild(inputLevel);
+	divLevel.appendChild(inputLevel);
 
 	divRow.appendChild(divCost);
-		divCost.appendChild(inputCost);
+	divCost.appendChild(inputCost);
 
 	document.getElementById("skill-dynamic").appendChild(divRow);
 
@@ -264,137 +264,137 @@ function addFieldsSkill() {
 
 
 function addFieldsSpell() {
-	var count				= document.getElementById("spell-dynamic").children.length + 1;
+	var count = document.getElementById("spell-dynamic").children.length + 1;
 
-	var divRow 				= document.createElement("div");
-	divRow.className		= "row";
-
-
-	var divName				= document.createElement("div");
-	divName.className		= "col-xs-4";
-
-	var inputName			= document.createElement("input");
-	inputName.type 			= "text";
-	inputName.className 	= "name";
-	inputName.id 			= "spell-name"+count;
-	inputName.placeholder 	= "Name/Description";
+	var divRow = document.createElement("div");
+	divRow.className = "row";
 
 
-	var divType				= document.createElement("div");
-	divType.className		= "col-xs-2";
+	var divName = document.createElement("div");
+	divName.className = "col-xs-4";
 
-	var selectType			= document.createElement("select");
-	selectType.className 	= "spell-type";
-	selectType.id 			= "spell-type"+count;
+	var inputName = document.createElement("input");
+	inputName.type = "text";
+	inputName.className = "name";
+	inputName.id = "spell-name" + count;
+	inputName.placeholder = "Name/Description";
 
-	var optionBlank			= document.createElement("option");
-	optionBlank.value 		= "";
-	var textBlank			= document.createTextNode("");
 
-	var optionRegular		= document.createElement("option");
-	optionRegular.value 	= "regular";
-	var textRegular			= document.createTextNode("Regular");
+	var divType = document.createElement("div");
+	divType.className = "col-xs-2";
 
-	var optionArea			= document.createElement("option");
-	optionArea.value 		= "area";
-	var textArea			= document.createTextNode("Area");
+	var selectType = document.createElement("select");
+	selectType.className = "spell-type";
+	selectType.id = "spell-type" + count;
 
-	var optionMelee			= document.createElement("option");
-	optionMelee.value 		= "melee";
-	var textMelee			= document.createTextNode("Melee");
+	var optionBlank = document.createElement("option");
+	optionBlank.value = "";
+	var textBlank = document.createTextNode("");
 
-	var optionMissile		= document.createElement("option");
-	optionMissile.value 	= "missile";
-	var textMissile			= document.createTextNode("Missile");
+	var optionRegular = document.createElement("option");
+	optionRegular.value = "regular";
+	var textRegular = document.createTextNode("Regular");
 
-	var optionInformation	= document.createElement("option");
+	var optionArea = document.createElement("option");
+	optionArea.value = "area";
+	var textArea = document.createTextNode("Area");
+
+	var optionMelee = document.createElement("option");
+	optionMelee.value = "melee";
+	var textMelee = document.createTextNode("Melee");
+
+	var optionMissile = document.createElement("option");
+	optionMissile.value = "missile";
+	var textMissile = document.createTextNode("Missile");
+
+	var optionInformation = document.createElement("option");
 	optionInformation.value = "information";
-	var textInformation		= document.createTextNode("Information");
+	var textInformation = document.createTextNode("Information");
 
-	var optionResisted		= document.createElement("option");
-	optionResisted.value 	= "resisted";
-	var textResisted		= document.createTextNode("Resisted");
+	var optionResisted = document.createElement("option");
+	optionResisted.value = "resisted";
+	var textResisted = document.createTextNode("Resisted");
 
-	var optionSpecial		= document.createElement("option");
-	optionSpecial.value 	= "special";
-	var textSpecial			= document.createTextNode("Special");
+	var optionSpecial = document.createElement("option");
+	optionSpecial.value = "special";
+	var textSpecial = document.createTextNode("Special");
 
 
-	var divDuration			= document.createElement("div");
-	divDuration.className	= "col-xs-2";
+	var divDuration = document.createElement("div");
+	divDuration.className = "col-xs-2";
 
-	var inputDuration		= document.createElement("input");
-	inputDuration.type 		= "text";
+	var inputDuration = document.createElement("input");
+	inputDuration.type = "text";
 	inputDuration.className = "duration";
-	inputDuration.id 		= "spell-duration"+count;
+	inputDuration.id = "spell-duration" + count;
 
 
-	var divTime				= document.createElement("div");
-	divTime.className		= "col-xs-2";
+	var divTime = document.createElement("div");
+	divTime.className = "col-xs-2";
 
-	var inputTime			= document.createElement("input");
-	inputTime.type 			= "text";
-	inputTime.className 	= "time";
-	inputTime.id 			= "spell-time"+count;
-
-
-	var divLevel			= document.createElement("div");
-	divLevel.className		= "col-xs-1";
-
-	var inputLevel			= document.createElement("input");
-	inputLevel.type 		= "number";
-	inputLevel.min 			= "0";
-	inputLevel.max 			= "200";
-	inputLevel.step 		= "1";
-	inputLevel.className 	= "level";
-	inputLevel.id 			= "spell-level"+count;
+	var inputTime = document.createElement("input");
+	inputTime.type = "text";
+	inputTime.className = "time";
+	inputTime.id = "spell-time" + count;
 
 
-	var divCost				= document.createElement("div");
-	divCost.className		= "col-xs-1";
+	var divLevel = document.createElement("div");
+	divLevel.className = "col-xs-1";
 
-	var inputCost			= document.createElement("input");
-	inputCost.type 			= "number";
-	inputCost.min 			= "0";
-	inputCost.max 			= "200";
-	inputCost.step 			= "1";
-	inputCost.className 	= "cost";
-	inputCost.id 			= "spell-cost"+count;
+	var inputLevel = document.createElement("input");
+	inputLevel.type = "number";
+	inputLevel.min = "0";
+	inputLevel.max = "200";
+	inputLevel.step = "1";
+	inputLevel.className = "level";
+	inputLevel.id = "spell-level" + count;
+
+
+	var divCost = document.createElement("div");
+	divCost.className = "col-xs-1";
+
+	var inputCost = document.createElement("input");
+	inputCost.type = "number";
+	inputCost.min = "0";
+	inputCost.max = "200";
+	inputCost.step = "1";
+	inputCost.className = "cost";
+	inputCost.id = "spell-cost" + count;
 
 
 	divRow.appendChild(divName);
-		divName.appendChild(inputName);
+	divName.appendChild(inputName);
 
 	divRow.appendChild(divType);
-		divType.appendChild(selectType);
-			selectType.appendChild(optionBlank);
-				optionBlank.appendChild(textBlank);
-			selectType.appendChild(optionRegular);
-				optionRegular.appendChild(textRegular);
-			selectType.appendChild(optionArea);
-				optionArea.appendChild(textArea);
-			selectType.appendChild(optionMelee);
-				optionMelee.appendChild(textMelee);
-			selectType.appendChild(optionMissile);
-				optionMissile.appendChild(textMissile);
-			selectType.appendChild(optionInformation);
-				optionInformation.appendChild(textInformation);
-			selectType.appendChild(optionResisted);
-				optionResisted.appendChild(textResisted);
-			selectType.appendChild(optionSpecial);
-				optionSpecial.appendChild(textSpecial);
+	divType.appendChild(selectType);
+	selectType.appendChild(optionBlank);
+	optionBlank.appendChild(textBlank);
+	selectType.appendChild(optionRegular);
+	optionRegular.appendChild(textRegular);
+	selectType.appendChild(optionArea);
+	optionArea.appendChild(textArea);
+	selectType.appendChild(optionMelee);
+	optionMelee.appendChild(textMelee);
+	selectType.appendChild(optionMissile);
+	optionMissile.appendChild(textMissile);
+	selectType.appendChild(optionInformation);
+	optionInformation.appendChild(textInformation);
+	selectType.appendChild(optionResisted);
+	optionResisted.appendChild(textResisted);
+	selectType.appendChild(optionSpecial);
+	optionSpecial.appendChild(textSpecial);
 
 	divRow.appendChild(divDuration);
-		divDuration.appendChild(inputDuration);
+	divDuration.appendChild(inputDuration);
 
 	divRow.appendChild(divTime);
-		divTime.appendChild(inputTime);
+	divTime.appendChild(inputTime);
 
 	divRow.appendChild(divLevel);
-		divLevel.appendChild(inputLevel);
+	divLevel.appendChild(inputLevel);
 
 	divRow.appendChild(divCost);
-		divCost.appendChild(inputCost);
+	divCost.appendChild(inputCost);
 
 	document.getElementById("spell-dynamic").appendChild(divRow);
 	setNewFieldnr();
@@ -402,22 +402,22 @@ function addFieldsSpell() {
 
 
 function addFieldsEquip() {
-	var count		= document.getElementById("equip-dynamic").children.length + 1;
+	var count = document.getElementById("equip-dynamic").children.length + 1;
 
-	var divRow 				= document.createElement("div");
-	divRow.className		= "row";
+	var divRow = document.createElement("div");
+	divRow.className = "row";
 
-	var divName				= document.createElement("div");
-	divName.className 		= "col-xs-12";
+	var divName = document.createElement("div");
+	divName.className = "col-xs-12";
 
-	var inputName			= document.createElement("input");
-	inputName.type 			= "text";
-	inputName.className 	= "equip-name";
-	inputName.id 			= "equip-name"+count;
-	inputName.placeholder 	= "Name/Description";
+	var inputName = document.createElement("input");
+	inputName.type = "text";
+	inputName.className = "equip-name";
+	inputName.id = "equip-name" + count;
+	inputName.placeholder = "Name/Description";
 
 	divRow.appendChild(divName);
-		divName.appendChild(inputName);
+	divName.appendChild(inputName);
 
 	document.getElementById("equip-dynamic").appendChild(divRow);
 
@@ -434,30 +434,30 @@ function addFieldsEquip() {
 function hideSpells() {
 	var spellwrap = document.getElementById("spellwrap");
 	spellwrap.classList.toggle("hidden-stuff");
-	document.getElementById("spellbutton").innerHTML = spellwrap.classList.contains("hidden-stuff")? "For I shall wield magic!":"Avast! Out of my sight!";
+	document.getElementById("spellbutton").innerHTML = spellwrap.classList.contains("hidden-stuff") ? "For I shall wield magic!" : "Avast! Out of my sight!";
 }
 
 // delete button with confirm
 function deleteAll() {
 	swal({
-    	title: "Are you sure?",
-    	text: "You will not be able to recover your character data!",
-    	type: "warning",
-    	showCancelButton: true,
-    	confirmButtonColor: "#DD6B55",
-    	confirmButtonText: "Yes, delete it!",
-    	cancelButtonText: "No, cancel please!",
-    	closeOnConfirm: false,
-    	closeOnCancel: false
-    },
-	function(isConfirm){
-		if (isConfirm) {
-			localStorage.clear();
-			swal("Deleted!", "Your character data has been deleted.", "success");
-		} else {
-			swal("Cancelled", "Your character data is safe :)", "error");
-		}
-	});
+			title: "Are you sure?",
+			text: "You will not be able to recover your character data!",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "Yes, delete it!",
+			cancelButtonText: "No, cancel please!",
+			closeOnConfirm: false,
+			closeOnCancel: false
+		},
+		function(isConfirm) {
+			if (isConfirm) {
+				localStorage.clear();
+				swal("Deleted!", "Your character data has been deleted.", "success");
+			} else {
+				swal("Cancelled", "Your character data is safe :)", "error");
+			}
+		});
 }
 
 // Custom Value Buttons: Define CSS change
@@ -468,7 +468,7 @@ function toggleValue() {
 
 function addToggle() {
 	for (var i = 0; i < 9; i++) {
-		document.getElementById("attr2-checkbox" + i).addEventListener("click", toggleValue.bind("custom-value"+i));
+		document.getElementById("attr2-checkbox" + i).addEventListener("click", toggleValue.bind("custom-value" + i));
 	}
 }
 
@@ -483,7 +483,7 @@ function checkLocalStorage() {
 	var output = "LOCALSTORAGE DATA:\n------------------------------------\n";
 	if (window.localStorage) {
 		if (localStorage.length) {
-		   for (var i = 0; i < localStorage.length; i++) {
+			for (var i = 0; i < localStorage.length; i++) {
 				output += localStorage.key(i) + ': ' + localStorage.getItem(localStorage.key(i)) + '\n';
 			}
 			swal("Good job!", "Your data was loaded successfully.", "success")
@@ -498,7 +498,7 @@ function checkLocalStorage() {
 
 
 // set Items to localStorage
-function storageSetItem (category, type) {
+function storageSetItem(category, type) {
 	for (var i = 0; i < fieldnr[category]; i++) {
 		var key = category + "-" + type + i;
 		var value = document.getElementById(key).value;
@@ -529,39 +529,39 @@ function saveAll() {
 
 	localStorage.setItem("name", document.getElementById("name").value);
 
-	storageSetItem ("attr", "level");
-	storageSetItem ("attr", "cost");
+	storageSetItem("attr", "level");
+	storageSetItem("attr", "cost");
 
-	storageSetItem ("attr2", "level");
-	storageSetItem ("attr2", "cost");
-	storageSetItem ("attr2", "checkbox");
+	storageSetItem("attr2", "level");
+	storageSetItem("attr2", "cost");
+	storageSetItem("attr2", "checkbox");
 
-	storageSetItem ("adv", "name");
-	storageSetItem ("adv", "cost");
+	storageSetItem("adv", "name");
+	storageSetItem("adv", "cost");
 
-	storageSetItem ("perk", "name");
-	storageSetItem ("perk", "cost");
+	storageSetItem("perk", "name");
+	storageSetItem("perk", "cost");
 
-	storageSetItem ("disadv", "name");
-	storageSetItem ("disadv", "cost");
+	storageSetItem("disadv", "name");
+	storageSetItem("disadv", "cost");
 
-	storageSetItem ("quirk", "name");
-	storageSetItem ("quirk", "cost");
+	storageSetItem("quirk", "name");
+	storageSetItem("quirk", "cost");
 
-	storageSetItem ("skill", "name");
-	storageSetItem ("skill", "type");
-	storageSetItem ("skill", "difficulty");
-	storageSetItem ("skill", "level");
-	storageSetItem ("skill", "cost");
+	storageSetItem("skill", "name");
+	storageSetItem("skill", "type");
+	storageSetItem("skill", "difficulty");
+	storageSetItem("skill", "level");
+	storageSetItem("skill", "cost");
 
-	storageSetItem ("spell", "name");
-	storageSetItem ("spell", "type");
-	storageSetItem ("spell", "duration");
-	storageSetItem ("spell", "time");
-	storageSetItem ("spell", "level");
-	storageSetItem ("spell", "cost");
+	storageSetItem("spell", "name");
+	storageSetItem("spell", "type");
+	storageSetItem("spell", "duration");
+	storageSetItem("spell", "time");
+	storageSetItem("spell", "level");
+	storageSetItem("spell", "cost");
 
-	storageSetItem ("equip", "name");
+	storageSetItem("equip", "name");
 
 	localStorage.setItem("attrLength", "4");
 	localStorage.setItem("attr2Length", "10");
@@ -619,7 +619,7 @@ function adaptFieldnrForLocalStorage(category, min, max) {
 				addFields(category, min, max);
 			}
 		}
-	////bei zu viel: lösche Felder weg
+		////bei zu viel: lösche Felder weg
 	} else if (diff < 0) {
 		for (var i = 0; i > diff; i--) {
 			removeFields(category);
@@ -633,21 +633,20 @@ function storageGetItemForDynamics(category, type) {
 	var expected = localStorage.getItem(category + "Length");
 	//füge localStorage Daten in die Eingabefelder ein
 	for (var i = 0; i < expected; i++) {
-        var item = category + "-" + type + i;
+		var item = category + "-" + type + i;
 		document.getElementById(item).value = localStorage.getItem(item);
 	}
 }
 
 function storageGetCheckbox() {
-	for (var i = 0; i<8; i++) {
-		var string = localStorage.getItem("attr2-checkbox"+i);
-		var label = document.getElementById("custom-value"+i);
+	for (var i = 0; i < 8; i++) {
+		var string = localStorage.getItem("attr2-checkbox" + i);
+		var label = document.getElementById("custom-value" + i);
 		if (string === "true") {
-			document.getElementById("attr2-checkbox"+i).checked = true;
+			document.getElementById("attr2-checkbox" + i).checked = true;
 			label.classList.toggle("green", true);
-		}
-		else if (string === "false") {
-			document.getElementById("attr2-checkbox"+i).checked = false;
+		} else if (string === "false") {
+			document.getElementById("attr2-checkbox" + i).checked = false;
 			label.classList.toggle("green", false);
 		}
 	}
@@ -664,13 +663,13 @@ function storageGetNotes() {
 function getAndInsertAll() {
 	checkLocalStorage();
 
-	document.getElementById("points-total-head").innerHTML 		= localStorage.getItem("points-total-head");
-	document.getElementById("positive-total-head").innerHTML 	= localStorage.getItem("positive-total-head");
-	document.getElementById("negative-total-head").innerHTML 	= localStorage.getItem("negative-total-head");
+	document.getElementById("points-total-head").innerHTML = localStorage.getItem("points-total-head");
+	document.getElementById("positive-total-head").innerHTML = localStorage.getItem("positive-total-head");
+	document.getElementById("negative-total-head").innerHTML = localStorage.getItem("negative-total-head");
 
-	document.getElementById("points-total-bottom").innerHTML 	= localStorage.getItem("points-total-head");
-	document.getElementById("positive-total-bottom").innerHTML 	= localStorage.getItem("positive-total-head");
-	document.getElementById("negative-total-bottom").innerHTML 	= localStorage.getItem("negative-total-head");
+	document.getElementById("points-total-bottom").innerHTML = localStorage.getItem("points-total-head");
+	document.getElementById("positive-total-bottom").innerHTML = localStorage.getItem("positive-total-head");
+	document.getElementById("negative-total-bottom").innerHTML = localStorage.getItem("negative-total-head");
 
 	document.getElementById("name").value = localStorage.getItem("name");
 
@@ -698,22 +697,22 @@ function getAndInsertAll() {
 	storageGetItemForDynamics("quirk", "cost");
 
 	adaptFieldnrForLocalStorage("skill");
-	storageGetItemForDynamics ("skill", "name");
-	storageGetItemForDynamics ("skill", "type");
-	storageGetItemForDynamics ("skill", "difficulty");
-	storageGetItemForDynamics ("skill", "level");
-	storageGetItemForDynamics ("skill", "cost");
+	storageGetItemForDynamics("skill", "name");
+	storageGetItemForDynamics("skill", "type");
+	storageGetItemForDynamics("skill", "difficulty");
+	storageGetItemForDynamics("skill", "level");
+	storageGetItemForDynamics("skill", "cost");
 
 	adaptFieldnrForLocalStorage("spell");
-	storageGetItemForDynamics ("spell", "name");
-	storageGetItemForDynamics ("spell", "type");
-	storageGetItemForDynamics ("spell", "duration");
-	storageGetItemForDynamics ("spell", "time");
-	storageGetItemForDynamics ("spell", "level");
-	storageGetItemForDynamics ("spell", "cost");
+	storageGetItemForDynamics("spell", "name");
+	storageGetItemForDynamics("spell", "type");
+	storageGetItemForDynamics("spell", "duration");
+	storageGetItemForDynamics("spell", "time");
+	storageGetItemForDynamics("spell", "level");
+	storageGetItemForDynamics("spell", "cost");
 
 	adaptFieldnrForLocalStorage("equip");
-	storageGetItemForDynamics ("equip", "name");
+	storageGetItemForDynamics("equip", "name");
 
 	storageGetNotes();
 }
@@ -728,21 +727,21 @@ function getAndInsertAll() {
 // füge die Werte nur dann automatisch ein, wenn "use custom value" auf false steht
 function berechneSekundaerattribute() {
 	// HP = ST
-	if (document.getElementById("attr2-checkbox0").checked == false) levels.hp.value	= levels.st.value;
+	if (document.getElementById("attr2-checkbox0").checked == false) levels.hp.value = levels.st.value;
 	// Will = IQ
 	if (document.getElementById("attr2-checkbox1").checked == false) levels.will.value = levels.iq.value;
 	// Per = IQ
 	if (document.getElementById("attr2-checkbox2").checked == false) levels.per.value = levels.iq.value;
 	// FP = HT
-	if (document.getElementById("attr2-checkbox3").checked == false) levels.fp.value 	= levels.ht.value;
+	if (document.getElementById("attr2-checkbox3").checked == false) levels.fp.value = levels.ht.value;
 	// Basic Speed = (HT+DX)/4
-	if (document.getElementById("attr2-checkbox4").checked == false) levels.bs.value 	= (parseInt(levels.ht.value) + parseInt(levels.dx.value)) / 4;
+	if (document.getElementById("attr2-checkbox4").checked == false) levels.bs.value = (parseInt(levels.ht.value) + parseInt(levels.dx.value)) / 4;
 	// Basic Move = Basic Speed (ohne Nachkommastellen)
-	if (document.getElementById("attr2-checkbox5").checked == false) levels.bm.value 	= parseInt(levels.bs.value);
+	if (document.getElementById("attr2-checkbox5").checked == false) levels.bm.value = parseInt(levels.bs.value);
 	// Dodge = Basic Speed (ohne Nachkommastellen) + 3
-	if (document.getElementById("attr2-checkbox6").checked == false) levels.dg.value 	= parseInt(levels.bs.value) + 3;
+	if (document.getElementById("attr2-checkbox6").checked == false) levels.dg.value = parseInt(levels.bs.value) + 3;
 	// Basic Lift = (ST*ST)/5
-	if (document.getElementById("attr2-checkbox7").checked == false) levels.bl.value 	= (parseInt(levels.st.value) * parseInt(levels.st.value)) / 5;
+	if (document.getElementById("attr2-checkbox7").checked == false) levels.bl.value = (parseInt(levels.st.value) * parseInt(levels.st.value)) / 5;
 }
 
 
@@ -757,25 +756,25 @@ function attributeCosts() {
 	var cost = 0;
 	for (var i = 0; i < 4; i++) {
 		if (i == 0 || i == 3) {
-			cost = (document.getElementById("attr-level"+i).value - 10) * 10;
+			cost = (document.getElementById("attr-level" + i).value - 10) * 10;
 		} else if (i == 1 || i == 2) {
-			cost = (document.getElementById("attr-level"+i).value - 10) * 20;
+			cost = (document.getElementById("attr-level" + i).value - 10) * 20;
 		}
-		document.getElementById("attr-cost"+i).value = cost;
+		document.getElementById("attr-cost" + i).value = cost;
 	}
 }
 
 
 // Errechne Skill-Kosten
 function skillCosts() {
-	var difference 		= 0;
-	var cost 			= 0;
-	var count 			= document.getElementById("skill-dynamic").children.length + 1;
-	var skillCostArray 	= [1, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96];
+	var difference = 0;
+	var cost = 0;
+	var count = document.getElementById("skill-dynamic").children.length + 1;
+	var skillCostArray = [1, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96];
 	for (var i = 0; i < count; i++) {
-		var skillType = document.getElementById("skill-type"+i).value;
-		var skillDifficulty = document.getElementById("skill-difficulty"+i).value;
-		var skillLevel = document.getElementById("skill-level"+i).value;
+		var skillType = document.getElementById("skill-type" + i).value;
+		var skillDifficulty = document.getElementById("skill-difficulty" + i).value;
+		var skillLevel = document.getElementById("skill-level" + i).value;
 		if (skillType && skillDifficulty && skillLevel) {
 			// errechne die Differenz zwischen Skill-Level und zugehörigem Attribut-Level
 			difference = skillLevel - levels[skillType].value;
@@ -784,15 +783,15 @@ function skillCosts() {
 			if (skillDifficulty == "easy" && difference > -1) {
 				cost = skillCostArray[difference];
 			} else if (skillDifficulty == "average" && difference > -2) {
-				cost = skillCostArray[difference+1];
+				cost = skillCostArray[difference + 1];
 			} else if (skillDifficulty == "hard" && difference > -3) {
-				cost = skillCostArray[difference+2];
+				cost = skillCostArray[difference + 2];
 			} else if (skillDifficulty == "veryhard" && difference > -4) {
-				cost = skillCostArray[difference+3];
+				cost = skillCostArray[difference + 3];
 			} else {
 				cost = 0;
 			}
-			document.getElementById("skill-cost"+i).value = cost;
+			document.getElementById("skill-cost" + i).value = cost;
 		}
 	}
 }
@@ -800,8 +799,8 @@ function skillCosts() {
 
 function damage() {
 	var st = document.getElementById("attr-level0").value;
-	var thrust	= ["0", "1d-6", "1d-6", "1d-5", "1d-5", "1d-4", "1d-4", "1d-3", "1d-3", "1d-2", "1d-2", "1d-1", "1d-1", "1d", "1d", "1d+1", "1d+1", "1d+2", "1d+2", "2d-1", "2d-1", "2d", "2d", "2d+1", "2d+1", "2d+2", "2d+2", "3d-1", "3d-1", "3d", "3d", "3d+1", "3d+1", "3d+2", "3d+2", "4d-1", "4d-1", "4d", "4d", "4d+1", "4d+1", "5d", "5d+2", "6d", "7d-1", "7d+1", "8d", "8d+2", "9d", "9d+2", "10d", "10d+2", "11d"];
-	var swing 	= ["0",  "1d-5", "1d-5", "1d-4", "1d-4", "1d-3", "1d-3", "1d-2", "1d-2", "1d-1", "1d", "1d+1", "1d+2", "2d-1", "2d", "2d+1", "2d+2", "3d-1", "3d", "3d+1", "3d+2", "4d-1", "4d", "4d+1", "4d+2", "5d-1", "5d", "5d+1", "5d+1", "5d+2", "5d+2", "6d-1", "6d-1", "6d", "6d", "6d+1", "6d+1", "6d+2", "6d+2", "7d-1", "7d-1", "7d+1", "8d-1", "8d+1", "9d", "9d+2", "10d", "10d+2", "11d", "11d+2", "12d", "12d+2", "13d"];
+	var thrust = ["0", "1d-6", "1d-6", "1d-5", "1d-5", "1d-4", "1d-4", "1d-3", "1d-3", "1d-2", "1d-2", "1d-1", "1d-1", "1d", "1d", "1d+1", "1d+1", "1d+2", "1d+2", "2d-1", "2d-1", "2d", "2d", "2d+1", "2d+1", "2d+2", "2d+2", "3d-1", "3d-1", "3d", "3d", "3d+1", "3d+1", "3d+2", "3d+2", "4d-1", "4d-1", "4d", "4d", "4d+1", "4d+1", "5d", "5d+2", "6d", "7d-1", "7d+1", "8d", "8d+2", "9d", "9d+2", "10d", "10d+2", "11d"];
+	var swing = ["0", "1d-5", "1d-5", "1d-4", "1d-4", "1d-3", "1d-3", "1d-2", "1d-2", "1d-1", "1d", "1d+1", "1d+2", "2d-1", "2d", "2d+1", "2d+2", "3d-1", "3d", "3d+1", "3d+2", "4d-1", "4d", "4d+1", "4d+2", "5d-1", "5d", "5d+1", "5d+1", "5d+2", "5d+2", "6d-1", "6d-1", "6d", "6d", "6d+1", "6d+1", "6d+2", "6d+2", "7d-1", "7d-1", "7d+1", "8d-1", "8d+1", "9d", "9d+2", "10d", "10d+2", "11d", "11d+2", "12d", "12d+2", "13d"];
 	document.getElementById("attr2-level8").value = thrust[st];
 	document.getElementById("attr2-level9").value = swing[st];
 }
@@ -860,43 +859,43 @@ function update() {
 	damage();
 	skillCosts();
 
-	var attrArray 		= createCostArray("attr-cost", fieldnr.attr);
-	var attr2Array 		= createCostArray("attr2-cost", fieldnr.attr2);
-	var advArray 		= createCostArray("adv-cost", fieldnr.adv);
-	var perkArray 		= createCostArray("perk-cost", fieldnr.perk);
-	var disadvArray     = createCostArray("disadv-cost", fieldnr.disadv);
-	var quirkArray 		= createCostArray("quirk-cost", fieldnr.quirk);
-	var skillArray 		= createCostArray("skill-cost", fieldnr.skill);
-	var spellArray		= createCostArray("spell-cost", fieldnr.spell);
+	var attrArray = createCostArray("attr-cost", fieldnr.attr);
+	var attr2Array = createCostArray("attr2-cost", fieldnr.attr2);
+	var advArray = createCostArray("adv-cost", fieldnr.adv);
+	var perkArray = createCostArray("perk-cost", fieldnr.perk);
+	var disadvArray = createCostArray("disadv-cost", fieldnr.disadv);
+	var quirkArray = createCostArray("quirk-cost", fieldnr.quirk);
+	var skillArray = createCostArray("skill-cost", fieldnr.skill);
+	var spellArray = createCostArray("spell-cost", fieldnr.spell);
 
-	attrArray 	= macheLeerZuNull(attrArray);
-	attr2Array 	= macheLeerZuNull(attr2Array);
-	advArray 	= macheLeerZuNull(advArray);
-	perkArray 	= macheLeerZuNull(perkArray);
-	disadvArray	= macheLeerZuNull(disadvArray);
-	quirkArray 	= macheLeerZuNull(quirkArray);
-	skillArray 	= macheLeerZuNull(skillArray);
-	spellArray 	= macheLeerZuNull(spellArray);
+	attrArray = macheLeerZuNull(attrArray);
+	attr2Array = macheLeerZuNull(attr2Array);
+	advArray = macheLeerZuNull(advArray);
+	perkArray = macheLeerZuNull(perkArray);
+	disadvArray = macheLeerZuNull(disadvArray);
+	quirkArray = macheLeerZuNull(quirkArray);
+	skillArray = macheLeerZuNull(skillArray);
+	spellArray = macheLeerZuNull(spellArray);
 
-	var attrTotalCost		= sum(attrArray);
-	var attr2TotalCost 		= sum(attr2Array);
-	var advTotalCost 		= sum(advArray);
-	var perkTotalCost 		= sum(perkArray);
-	var disadvTotalCost 	= sum(disadvArray);
-	var quirkTotalCost 		= sum(quirkArray);
-	var skillTotalCost 		= sum(skillArray);
-	var spellTotalCost 		= sum(spellArray);
+	var attrTotalCost = sum(attrArray);
+	var attr2TotalCost = sum(attr2Array);
+	var advTotalCost = sum(advArray);
+	var perkTotalCost = sum(perkArray);
+	var disadvTotalCost = sum(disadvArray);
+	var quirkTotalCost = sum(quirkArray);
+	var skillTotalCost = sum(skillArray);
+	var spellTotalCost = sum(spellArray);
 
-	var positivePoints      = attrTotalCost + attr2TotalCost + advTotalCost + perkTotalCost + skillTotalCost + spellTotalCost;
-	var negativePoints      = disadvTotalCost + quirkTotalCost;
-	var totalPoints         = positivePoints + negativePoints;
+	var positivePoints = attrTotalCost + attr2TotalCost + advTotalCost + perkTotalCost + skillTotalCost + spellTotalCost;
+	var negativePoints = disadvTotalCost + quirkTotalCost;
+	var totalPoints = positivePoints + negativePoints;
 
-	document.getElementById("points-total-head").innerHTML       	= totalPoints;
-	document.getElementById("positive-total-head").innerHTML   		= positivePoints;
-	document.getElementById("negative-total-head").innerHTML   		= negativePoints;
-	document.getElementById("points-total-bottom").innerHTML       	= totalPoints;
-	document.getElementById("positive-total-bottom").innerHTML     	= positivePoints;
-	document.getElementById("negative-total-bottom").innerHTML    	= negativePoints;
+	document.getElementById("points-total-head").innerHTML = totalPoints;
+	document.getElementById("positive-total-head").innerHTML = positivePoints;
+	document.getElementById("negative-total-head").innerHTML = negativePoints;
+	document.getElementById("points-total-bottom").innerHTML = totalPoints;
+	document.getElementById("positive-total-bottom").innerHTML = positivePoints;
+	document.getElementById("negative-total-bottom").innerHTML = negativePoints;
 }
 
 /******************************************************************************************************/
@@ -904,12 +903,12 @@ function update() {
 // UNICORN MOUSE FOLLOW
 
 function followMouse(event) {
-    var x = event.clientX;
-    var y = event.clientY;
-    x = x + 1;     // move follower 10px right and 10px down to not overlay the mouse
-    y = y + 1;
-    document.getElementById("unicorn").style.left = x + "px";
-    document.getElementById("unicorn").style.top = y + "px";
+	var x = event.clientX;
+	var y = event.clientY;
+	x = x + 1; // move follower 10px right and 10px down to not overlay the mouse
+	y = y + 1;
+	document.getElementById("unicorn").style.left = x + "px";
+	document.getElementById("unicorn").style.top = y + "px";
 }
 
 function showUnicorn() {
@@ -918,10 +917,10 @@ function showUnicorn() {
 		window.addEventListener("mousemove", followMouse);
 		unicorn.classList.remove("hidden-stuff");
 		swal("Unicorn activated!", "This little pony wants to follow you around. It can be hidden by clicking the button one more time.");
-	} else if (!unicorn.classList.contains("hidden-stuff")){
+	} else if (!unicorn.classList.contains("hidden-stuff")) {
 		unicorn.classList.add("hidden-stuff");
 	}
-	document.getElementById("unicorn-button").innerHTML = document.getElementById("unicorn").classList.contains("hidden-stuff")? "activate unicorn" : "hide unicorn";
+	document.getElementById("unicorn-button").innerHTML = document.getElementById("unicorn").classList.contains("hidden-stuff") ? "activate unicorn" : "hide unicorn";
 }
 
 
@@ -939,7 +938,9 @@ function saveTextAsFile() {
 	}
 
 	var textToWrite = JSON.stringify(localSt);
-	var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+	var textFileAsBlob = new Blob([textToWrite], {
+		type: 'text/plain'
+	});
 	var fileNameToSaveAs = document.getElementById("input-file-name").value;
 
 	var downloadLink = document.createElement("a");
@@ -949,8 +950,7 @@ function saveTextAsFile() {
 		// Chrome allows the link to be clicked
 		// without actually adding it to the DOM.
 		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-	}
-	else {
+	} else {
 		// Firefox requires the link to be added to the DOM
 		// before it can be clicked.
 		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
@@ -982,9 +982,9 @@ function loadFileAsText() {
 
 function insertLoadedDataToLocalStorage(data) {
 	localStorage.clear();
-    for (var i in data) {
-        localStorage.setItem(i, data[i]);
-    }
+	for (var i in data) {
+		localStorage.setItem(i, data[i]);
+	}
 }
 
 /******************************************************************************************************/
@@ -993,19 +993,19 @@ function insertLoadedDataToLocalStorage(data) {
 
 function setup() {
 	// set Variables
-	levels.st		= document.getElementById("attr-level0");
-	levels.dx		= document.getElementById("attr-level1");
-	levels.iq		= document.getElementById("attr-level2");
-	levels.ht		= document.getElementById("attr-level3");
+	levels.st = document.getElementById("attr-level0");
+	levels.dx = document.getElementById("attr-level1");
+	levels.iq = document.getElementById("attr-level2");
+	levels.ht = document.getElementById("attr-level3");
 
-	levels.hp		= document.getElementById("attr2-level0");
-	levels.will  	= document.getElementById("attr2-level1");
-	levels.per      = document.getElementById("attr2-level2");
-	levels.fp		= document.getElementById("attr2-level3");
-	levels.bs		= document.getElementById("attr2-level4");
-	levels.bm		= document.getElementById("attr2-level5");
-	levels.dg		= document.getElementById("attr2-level6");
-	levels.bl		= document.getElementById("attr2-level7");
+	levels.hp = document.getElementById("attr2-level0");
+	levels.will = document.getElementById("attr2-level1");
+	levels.per = document.getElementById("attr2-level2");
+	levels.fp = document.getElementById("attr2-level3");
+	levels.bs = document.getElementById("attr2-level4");
+	levels.bm = document.getElementById("attr2-level5");
+	levels.dg = document.getElementById("attr2-level6");
+	levels.bl = document.getElementById("attr2-level7");
 
 
 	// Automatically update the count by clicking or keypress
@@ -1013,14 +1013,14 @@ function setup() {
 
 	// Minus and Plus Button for Adv/Perks/Disadv/Quirks
 	document.getElementById("advminus").addEventListener("click", function() {
-   		removeFields('adv');
+		removeFields('adv');
 	});
 	document.getElementById("advplus").addEventListener("click", function() {
-	    addFields("adv", "0", "200");
+		addFields("adv", "0", "200");
 	});
 
 	document.getElementById("perkminus").addEventListener("click", function() {
-	    removeFields('perk');
+		removeFields('perk');
 	});
 	document.getElementById("perkplus").addEventListener("click", function() {
 		addFields("perk", "0", "1");
@@ -1030,42 +1030,42 @@ function setup() {
 		removeFields('disadv');
 	});
 	document.getElementById("disadvplus").addEventListener("click", function() {
-	    addFields("disadv", "-200", "0");
+		addFields("disadv", "-200", "0");
 	});
 
 	document.getElementById("quirkminus").addEventListener("click", function() {
-	    removeFields('quirk');
+		removeFields('quirk');
 	});
 	document.getElementById("quirkplus").addEventListener("click", function() {
-	    addFields("quirk", "-1", "0");
+		addFields("quirk", "-1", "0");
 	});
 
 
 	// Minus and Plus Button for Skills
 	document.getElementById("skillminus").addEventListener("click", function() {
-   		removeFields('skill');
+		removeFields('skill');
 	});
 	document.getElementById("skillplus").addEventListener("click", addFieldsSkill);
 
 
 	// Minus and Plus Button for Spells
 	document.getElementById("spellminus").addEventListener("click", function() {
-   		removeFields('spell');
+		removeFields('spell');
 	});
 	document.getElementById("spellplus").addEventListener("click", addFieldsSpell);
 
 
 	// Minus and Plus Button for Equipment
 	document.getElementById("equipminus").addEventListener("click", function() {
-   		removeFields('equip');
+		removeFields('equip');
 	});
 	document.getElementById("equipplus").addEventListener("click", addFieldsEquip);
 
 
 	// Hide/Show Button for Spells
 	document.getElementById("spellbutton").addEventListener("click", function() {
-	    hideSpells();
-	    window.scrollBy(0, 500);
+		hideSpells();
+		window.scrollBy(0, 500);
 	});
 
 	// Toggle Buttons for Comments
@@ -1083,8 +1083,8 @@ function setup() {
 
 	// save-button for localStorage
 	document.getElementById("save-button").addEventListener("click", function() {
-	    saveAll();
-	    swal("Data saved!", "Your character's data was saved to the browser's local storage. To load your data, just click the 'Load Character Data' button. Caution: This will only work in the same browser, where you saved the data!", "success");
+		saveAll();
+		swal("Data saved!", "Your character's data was saved to the browser's local storage. To load your data, just click the 'Load Character Data' button. Caution: This will only work in the same browser, where you saved the data!", "success");
 	});
 
 	// get-my-data-button for localStorage
@@ -1094,10 +1094,10 @@ function setup() {
 	document.getElementById("delete-data-button").addEventListener("click", deleteAll);
 
 	//save and load data as text file
-	$("#save-file-as-text").click(function(){
+	$("#save-file-as-text").click(function() {
 		saveTextAsFile();
 	});
-	$("#load-file-as-text").click(function(){
+	$("#load-file-as-text").click(function() {
 		loadFileAsText();
 	});
 
