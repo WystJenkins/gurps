@@ -26,6 +26,8 @@ fieldnr.equip = 1;
 
 var localStorageInput = "";
 
+const SKILL_COSTS = [1, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 100, 104, 108, 112];
+
 /******************************************************************************************************/
 
 // fieldnr updaten
@@ -320,22 +322,29 @@ function addFieldsSpell() {
 	var textSpecial = document.createTextNode("Special");
 
 
-	var divDuration = document.createElement("div");
-	divDuration.className = "col-xs-2";
+	var divSpellSkill = document.createElement("div");
+	divSpellSkill.className = "col-xs-1";
 
-	var inputDuration = document.createElement("input");
-	inputDuration.type = "text";
-	inputDuration.className = "duration";
-	inputDuration.id = "spell-duration" + count;
+	var selectSpellSkill = document.createElement("select");
+	selectSpellSkill.className = "spell-skill";
+	selectSpellSkill.id = "spell-skill" + count;
+
+	var optionHard = document.createElement("option");
+	optionHard.value = "hard";
+	var textHard = document.createTextNode("H");
+
+	var optionVeryHard = document.createElement("option");
+	optionVeryHard.value = "veryhard";
+	var textVeryHard = document.createTextNode("VH");
 
 
-	var divTime = document.createElement("div");
-	divTime.className = "col-xs-2";
+	var divTimeDuration = document.createElement("div");
+	divTimeDuration.className = "col-xs-3";
 
-	var inputTime = document.createElement("input");
-	inputTime.type = "text";
-	inputTime.className = "time";
-	inputTime.id = "spell-time" + count;
+	var inputTimeDuration = document.createElement("input");
+	inputTimeDuration.type = "text";
+	inputTimeDuration.className = "time-duration";
+	inputTimeDuration.id = "spell-time-duration" + count;
 
 
 	var divLevel = document.createElement("div");
@@ -361,9 +370,15 @@ function addFieldsSpell() {
 	inputCost.className = "cost";
 	inputCost.id = "spell-cost" + count;
 
-
 	divRow.appendChild(divName);
 	divName.appendChild(inputName);
+
+	divRow.appendChild(divSpellSkill);
+	divSpellSkill.appendChild(selectSpellSkill);
+	selectSpellSkill.appendChild(optionHard);
+	optionHard.appendChild(textHard);
+	selectSpellSkill.appendChild(optionVeryHard);
+	optionVeryHard.appendChild(textVeryHard);
 
 	divRow.appendChild(divType);
 	divType.appendChild(selectType);
@@ -384,11 +399,8 @@ function addFieldsSpell() {
 	selectType.appendChild(optionSpecial);
 	optionSpecial.appendChild(textSpecial);
 
-	divRow.appendChild(divDuration);
-	divDuration.appendChild(inputDuration);
-
-	divRow.appendChild(divTime);
-	divTime.appendChild(inputTime);
+	divRow.appendChild(divTimeDuration);
+	divTimeDuration.appendChild(inputTimeDuration);
 
 	divRow.appendChild(divLevel);
 	divLevel.appendChild(inputLevel);
@@ -555,9 +567,9 @@ function saveAll() {
 	storageSetItem("skill", "cost");
 
 	storageSetItem("spell", "name");
+	storageSetItem("spell", "skill");
 	storageSetItem("spell", "type");
-	storageSetItem("spell", "duration");
-	storageSetItem("spell", "time");
+	storageSetItem("spell", "time-duration");
 	storageSetItem("spell", "level");
 	storageSetItem("spell", "cost");
 
@@ -705,9 +717,9 @@ function getAndInsertAll() {
 
 	adaptFieldnrForLocalStorage("spell");
 	storageGetItemForDynamics("spell", "name");
+	storageGetItemForDynamics("spell", "skill");
 	storageGetItemForDynamics("spell", "type");
-	storageGetItemForDynamics("spell", "duration");
-	storageGetItemForDynamics("spell", "time");
+	storageGetItemForDynamics("spell", "time-duration");
 	storageGetItemForDynamics("spell", "level");
 	storageGetItemForDynamics("spell", "cost");
 
@@ -770,7 +782,6 @@ function skillCosts() {
 	var difference = 0;
 	var cost = 0;
 	var count = document.getElementById("skill-dynamic").children.length + 1;
-	var skillCostArray = [1, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96];
 	for (var i = 0; i < count; i++) {
 		var skillType = document.getElementById("skill-type" + i).value;
 		var skillDifficulty = document.getElementById("skill-difficulty" + i).value;
@@ -781,13 +792,13 @@ function skillCosts() {
 
 			// überprüfe, ob die Differenz einen validen Wert hat und gib die Kosten aus
 			if (skillDifficulty == "easy" && difference > -1) {
-				cost = skillCostArray[difference];
+				cost = SKILL_COSTS[difference];
 			} else if (skillDifficulty == "average" && difference > -2) {
-				cost = skillCostArray[difference + 1];
+				cost = SKILL_COSTS[difference + 1];
 			} else if (skillDifficulty == "hard" && difference > -3) {
-				cost = skillCostArray[difference + 2];
+				cost = SKILL_COSTS[difference + 2];
 			} else if (skillDifficulty == "veryhard" && difference > -4) {
-				cost = skillCostArray[difference + 3];
+				cost = SKILL_COSTS[difference + 3];
 			} else {
 				cost = 0;
 			}
@@ -796,6 +807,24 @@ function skillCosts() {
 	}
 }
 
+// Errechne Spell-Kosten
+function spellCosts() {
+	let spellRows = $("#spell-dynamic").children().length + 1;
+
+	for (let i = 0; i < spellRows; i++) {
+		let level = $(`#spell-level${i}`).val();
+		let skillType = $(`#spell-skill${i}`).val();
+		let iq = $(levels.iq).val();
+
+		if (!skillType || !level) {
+			continue;
+		}
+
+		let cost = getSkillCost(skillType, iq, level);
+
+		$(`#spell-cost${i}`).val(cost);
+	}
+}
 
 function damage() {
 	var st = document.getElementById("attr-level0").value;
@@ -803,6 +832,20 @@ function damage() {
 	var swing = ["0", "1d-5", "1d-5", "1d-4", "1d-4", "1d-3", "1d-3", "1d-2", "1d-2", "1d-1", "1d", "1d+1", "1d+2", "2d-1", "2d", "2d+1", "2d+2", "3d-1", "3d", "3d+1", "3d+2", "4d-1", "4d", "4d+1", "4d+2", "5d-1", "5d", "5d+1", "5d+1", "5d+2", "5d+2", "6d-1", "6d-1", "6d", "6d", "6d+1", "6d+1", "6d+2", "6d+2", "7d-1", "7d-1", "7d+1", "8d-1", "8d+1", "9d", "9d+2", "10d", "10d+2", "11d", "11d+2", "12d", "12d+2", "13d"];
 	document.getElementById("attr2-level8").value = thrust[st];
 	document.getElementById("attr2-level9").value = swing[st];
+}
+
+function getSkillCost(type, level, expectedLevel) {
+	const SKILL_TYPE_ADDEND = {
+		easy: 0,
+		average: 1,
+		hard: 2,
+		veryhard: 3,
+	};
+
+	let diff = parseInt(expectedLevel) - parseInt(level);
+	let index = diff + SKILL_TYPE_ADDEND[type];
+
+	return SKILL_COSTS[index] || 0;
 }
 
 
@@ -858,6 +901,7 @@ function update() {
 	attributeCosts();
 	damage();
 	skillCosts();
+	spellCosts();
 
 	var attrArray = createCostArray("attr-cost", fieldnr.attr);
 	var attr2Array = createCostArray("attr2-cost", fieldnr.attr2);
@@ -1100,7 +1144,6 @@ function setup() {
 	$("#load-file-as-text").click(function() {
 		loadFileAsText();
 	});
-
 }
 
 window.addEventListener("load", setup);
