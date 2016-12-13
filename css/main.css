@@ -1,0 +1,1065 @@
+/* line 1, ../scss/base/_base.scss */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+/* line 7, ../scss/base/_base.scss */
+#content {
+  width: 970px;
+  margin: auto;
+  padding: auto;
+}
+
+/* line 13, ../scss/base/_base.scss */
+main, #main {
+  margin: 0px 0px 15px 8px;
+}
+
+/* line 17, ../scss/base/_base.scss */
+h2 {
+  margin: 35px 0px 0px 0px;
+}
+
+/*div {
+	background-color: lightblue;
+	border: 1px solid white;
+}*/
+/*------------------------------------------------*/
+/* MOBILE VERSION (PORTRAIT)                      */
+/*------------------------------------------------*/
+@media only screen and (max-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* line 40, ../scss/base/_base.scss */
+  body,
+  input,
+  select,
+  button,
+  div.attr-name,
+  div.attr-formular,
+  div.attr2-name,
+  div.attr-formular,
+  a.tooltip,
+  div.tooltip-symbol {
+    font-family: 'Open Sans', sans-serif, Georgia, "Times New Roman", Times, serif;
+    font-size: 1.8em;
+  }
+
+  /* line 45, ../scss/base/_base.scss */
+  h2 {
+    margin: 35px 0px 0px 0px;
+  }
+}
+/*------------------------------------------------*/
+/* PRINT VERSION                                  */
+/*------------------------------------------------*/
+@media print {
+  /* line 64, ../scss/base/_base.scss */
+  body,
+  input,
+  select,
+  option,
+  div,
+  span,
+  p,
+  h1,
+  h2,
+  h3 {
+    font-family: Helvetica, sans-serif;
+    font-size: 10pt;
+    background-color: rgba(0, 0, 0, 0);
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* line 72, ../scss/base/_base.scss */
+  h2 {
+    font-size: 1.3em;
+    margin: 25px 0 0 0;
+    padding: 0;
+  }
+}
+/* line 1, ../scss/layout/_header.scss */
+h1 {
+  background-color: #301849;
+  color: whitesmoke;
+  padding: 35px 20px;
+  margin: 0px 0px 25px 0px;
+  display: block;
+  text-align: center;
+}
+
+/*------------------------------------------------*/
+/* MOBILE VERSION (PORTRAIT)                      */
+/*------------------------------------------------*/
+@media only screen and (max-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* line 16, ../scss/layout/_header.scss */
+  h1 {
+    text-align: center;
+    color: white;
+    background-color: #556468;
+    padding: 30px;
+    margin: 0;
+  }
+}
+/*------------------------------------------------*/
+/* PRINT VERSION                                  */
+/*------------------------------------------------*/
+@media print {
+  /* line 30, ../scss/layout/_header.scss */
+  h1 {
+    background: none;
+    color: #000;
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+  }
+}
+/* line 1, ../scss/layout/_content.scss */
+.headline {
+  margin: 15px -15px -14px -15px;
+}
+
+/* line 8, ../scss/layout/_content.scss */
+div.attr-name,
+div.attr-formular,
+div.attr2-name,
+div.attr-formular {
+  width: 100%;
+  float: left;
+  background-color: #d5e0e2;
+  color: #000;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  /*margin: 0px 10px 10px 0px;*/
+  outline: 0;
+  padding: 7px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-shadow: 0 1px 0 #F8F8F8 inset;
+  -webkit-box-shadow: 0 1px 0 #F8F8F8 inset;
+  -moz-box-shadow: 0 1px 0 #F8F8F8 inset;
+}
+
+/* line 27, ../scss/layout/_content.scss */
+.spells-second-line {
+  margin: -5px 0 20px 0px;
+}
+
+/* line 31, ../scss/layout/_content.scss */
+.tooltip {
+  display: inline;
+  position: relative;
+  color: #96002d;
+}
+
+/* line 37, ../scss/layout/_content.scss */
+.tooltip:hover:after {
+  background: #333333;
+  border-radius: 3px;
+  bottom: 26px;
+  color: #fff;
+  font-size: 14pt;
+  font-weight: normal;
+  content: attr(title);
+  left: 20%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 450px;
+  white-space: pre-wrap;
+}
+
+/* line 53, ../scss/layout/_content.scss */
+.tooltip-symbol {
+  display: inline;
+  position: relative;
+  margin: 0 0 0px 72px;
+}
+
+/* line 60, ../scss/layout/_content.scss */
+div#tooltip1,
+div#tooltip2 {
+  margin: 0;
+}
+
+/* line 65, ../scss/layout/_content.scss */
+.points-bottom,
+.points-head {
+  margin: 0px 20px 0px 20px;
+  font-weight: bold;
+}
+
+/* line 70, ../scss/layout/_content.scss */
+div.cost-total {
+  border: 1px solid lightgrey;
+  margin: 0;
+  width: 100%;
+  border-radius: 3px;
+  background-color: #E8EEEF;
+  text-align: center;
+}
+
+/* line 79, ../scss/layout/_content.scss */
+div.buttonwrap-top {
+  margin: 0 0 20px 0;
+}
+
+/* line 83, ../scss/layout/_content.scss */
+div.buttonwrap {
+  margin: 0px;
+}
+
+/* line 87, ../scss/layout/_content.scss */
+.hidden-boxes {
+  display: none;
+}
+
+/* line 91, ../scss/layout/_content.scss */
+.hidden-stuff {
+  display: none;
+}
+
+/* line 95, ../scss/layout/_content.scss */
+.unicorn {
+  position: absolute;
+  overflow: hidden;
+  z-index: 999;
+}
+
+/* line 101, ../scss/layout/_content.scss */
+div.comment-button {
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: 15px;
+  float: left;
+}
+
+/* line 111, ../scss/layout/_content.scss */
+.saveload-button-wrapper {
+  border: 1px solid #C3C3C3;
+  padding: 0px 35px;
+  margin: 15px 0px;
+  border-radius: 5px;
+}
+
+/*------------------------------------------------*/
+/* MOBILE VERSION (PORTRAIT)                      */
+/*------------------------------------------------*/
+@media only screen and (max-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* line 125, ../scss/layout/_content.scss */
+  div.attr-name,
+  div.attr-formular,
+  div.attr2-name {
+    width: 90%;
+    float: left;
+    background-color: rgba(147, 175, 180, 0);
+    color: black;
+    border: none;
+    border-radius: 4px;
+    margin: 0px 10px 10px 0px;
+    outline: 0;
+    padding: 7px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0) inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0) inset;
+  }
+
+  /* line 142, ../scss/layout/_content.scss */
+  div.attr-formular {
+    display: none;
+  }
+
+  /* line 146, ../scss/layout/_content.scss */
+  .spells-second-line {
+    margin: -5px 0 20px 0px;
+  }
+
+  /* line 150, ../scss/layout/_content.scss */
+  .tooltip {
+    display: inline;
+    position: relative;
+    color: #96002d;
+  }
+
+  /* line 156, ../scss/layout/_content.scss */
+  .tooltip:hover:after {
+    background: rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    bottom: 26px;
+    color: #fff;
+    font-weight: normal;
+    content: attr(title);
+    left: 20%;
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 98;
+    width: 450px;
+    white-space: pre-wrap;
+  }
+
+  /* line 171, ../scss/layout/_content.scss */
+  .tooltip-symbol {
+    display: none;
+  }
+
+  /* line 176, ../scss/layout/_content.scss */
+  div#tooltip1,
+  div#tooltip2 {
+    margin: 0;
+  }
+
+  /* line 181, ../scss/layout/_content.scss */
+  .points-bottom,
+  .points-head {
+    margin: 0px 20px 0px 20px;
+    font-weight: bold;
+  }
+
+  /* line 186, ../scss/layout/_content.scss */
+  div.cost-total {
+    border: 1px solid lightgrey;
+    padding: 10px 0 10px 0;
+    margin: 0;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #E8EEEF;
+    display: inline-flex;
+    font-size: 1.5em;
+  }
+
+  /* line 197, ../scss/layout/_content.scss */
+  div.buttonwrap-top {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(232, 238, 239, 0);
+  }
+
+  /* line 204, ../scss/layout/_content.scss */
+  div.buttonwrap {
+    width: auto;
+  }
+
+  /* line 214, ../scss/layout/_content.scss */
+  #buttonwrap-adv,
+  #buttonwrap-perk,
+  #buttonwrap-disadv,
+  #buttonwrap-quirk,
+  #buttonwrap-skill,
+  #buttonwrap-spell,
+  #buttonwrap-equip {
+    margin: 0px;
+  }
+
+  /* line 218, ../scss/layout/_content.scss */
+  .spellwrap {
+    display: none;
+    font-size: 1.8em;
+  }
+
+  /* line 230, ../scss/layout/_content.scss */
+  .spellwrap h2,
+  .spellwrap button,
+  .spellwrap .name,
+  .spellwrap .spell-type,
+  .spellwrap .duration,
+  .spellwrap .time,
+  .spellwrap .level,
+  .spellwrap .cost {
+    font-size: 1em;
+  }
+
+  /* line 234, ../scss/layout/_content.scss */
+  .hidden {
+    display: inline;
+  }
+
+  /* line 238, ../scss/layout/_content.scss */
+  .hidden-boxes {
+    display: none;
+  }
+
+  /* line 242, ../scss/layout/_content.scss */
+  .hidden-stuff {
+    display: none;
+  }
+
+  /* line 246, ../scss/layout/_content.scss */
+  #cost-total-bottom {
+    width: 100%;
+    margin: 0px;
+  }
+}
+/*------------------------------------------------*/
+/* PRINT VERSION                                  */
+/*------------------------------------------------*/
+@media print {
+  /* line 261, ../scss/layout/_content.scss */
+  div.attr-name,
+  div.attr-formular,
+  .attr2-name,
+  .attr-formular,
+  .attr2-unit {
+    width: 150px;
+    float: left;
+    color: black;
+    margin: 0px 5px 0px 0px;
+    background-color: white;
+    padding: 0px;
+    border: none;
+    border-radius: 0px;
+    outline: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-shadow: 0 1px 0 #F8F8F8 inset;
+    -webkit-box-shadow: 0 1px 0 #F8F8F8 inset;
+    -moz-box-shadow: 0 1px 0 #F8F8F8 inset;
+  }
+
+  /* line 279, ../scss/layout/_content.scss */
+  .spells-second-line {
+    margin: 0px 0px 20px 0px;
+  }
+}
+/*sidebar blocks, primary and secondary color blocks*/
+/* line 1, ../scss/modules/_buttons.scss */
+button {
+  padding: 17px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+}
+
+/* line 8, ../scss/modules/_buttons.scss */
+.plusminus {
+  background: #492470;
+  color: #F1F1F1;
+  margin: 0px 5px 0 0;
+  padding: 0px;
+  width: 35%;
+  height: 25px;
+  border-radius: 3px;
+  font-size: 1em;
+  font-weight: bold;
+  float: left;
+}
+
+/* line 21, ../scss/modules/_buttons.scss */
+.plusminus:hover {
+  background: #663399;
+}
+
+/* line 25, ../scss/modules/_buttons.scss */
+#spellbutton {
+  background-color: lightgrey;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 36px;
+  font-size: 0.6em;
+  font-weight: bold;
+}
+
+/* line 37, ../scss/modules/_buttons.scss */
+.setgetbuttons,
+.printbuttons,
+.countbuttons {
+  background-color: lightgrey;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 45px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+/* line 50, ../scss/modules/_buttons.scss */
+.countbuttons:hover,
+.setgetbuttons:hover,
+.printbuttons:hover,
+#spellbutton:hover {
+  background: #dbdbdb;
+}
+
+/* line 54, ../scss/modules/_buttons.scss */
+#unicorn-button {
+  position: absolute;
+  border: 1px solid #301849;
+  color: #301849;
+  width: 131px;
+  text-align: center;
+  border-radius: 3px;
+  margin: 0;
+  padding: 2px 6px;
+  font-weight: bold;
+  right: 1%;
+  top: 1%;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* line 70, ../scss/modules/_buttons.scss */
+#unicorn-button:hover {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+/* line 75, ../scss/modules/_buttons.scss */
+label.custom-value {
+  width: auto;
+  background-color: #492470;
+  color: whitesmoke;
+  padding: 6px 6px 6px 0px;
+  margin: 0 0 0 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* line 87, ../scss/modules/_buttons.scss */
+label.green {
+  background-color: lightgreen;
+  color: black;
+}
+
+/* line 92, ../scss/modules/_buttons.scss */
+.saveload-buttons {
+  height: 38px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* line 99, ../scss/modules/_buttons.scss */
+input[type="file"] {
+  display: inline;
+}
+
+/*------------------------------------------------*/
+/* MOBILE VERSION (PORTRAIT)                      */
+/*------------------------------------------------*/
+@media only screen and (max-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* line 108, ../scss/modules/_buttons.scss */
+  button.plusminus {
+    background-color: lightgrey;
+    border: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+    width: 90px;
+    height: 80px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.8em;
+  }
+
+  /* line 120, ../scss/modules/_buttons.scss */
+  button#spellbutton {
+    background-color: lightgrey;
+    border: none;
+    margin: 40px 0px;
+    padding: 0;
+    width: 100%;
+    height: 136px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  /* line 134, ../scss/modules/_buttons.scss */
+  button.setgetbuttons,
+  button.printbuttons,
+  button.countbuttons {
+    background-color: lightgrey;
+    border: none;
+    margin: 23px;
+    padding: 0;
+    width: 370px;
+    height: 136px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  /* line 146, ../scss/modules/_buttons.scss */
+  div#unicorn-button {
+    display: none;
+  }
+
+  /* line 150, ../scss/modules/_buttons.scss */
+  #updateButton, #updateButton2 {
+    width: 100%;
+    margin: 10px 0px 0px 0px;
+    font-size: 1.5em;
+  }
+
+  /* line 156, ../scss/modules/_buttons.scss */
+  label.custom-value {
+    background-color: #492470;
+    color: whitesmoke;
+    padding: 0px 6px;
+    margin: 0px;
+    font-size: 0.5em;
+  }
+
+  /* line 164, ../scss/modules/_buttons.scss */
+  label.green {
+    background-color: lightgreen;
+    color: black;
+  }
+}
+/*------------------------------------------------*/
+/* PRINT VERSION                                  */
+/*------------------------------------------------*/
+@media print {
+  /* line 183, ../scss/modules/_buttons.scss */
+  button,
+  .tooltip,
+  .points-bottom,
+  .plusminus,
+  #spellbutton,
+  #cost-total-bottom,
+  label.custom-value,
+  div#unicorn-button,
+  .saveload-buttons {
+    display: none;
+  }
+}
+/*alerts, progress bars, etc*/
+/* line 1, ../scss/modules/_input.scss */
+form {
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+
+/* line 7, ../scss/modules/_input.scss */
+input {
+  border-radius: 3px;
+  border: none;
+}
+
+/* line 12, ../scss/modules/_input.scss */
+select {
+  height: 36px;
+  border-radius: 3px;
+}
+
+/* line 26, ../scss/modules/_input.scss */
+input.name,
+input.type,
+input.default,
+input.level,
+input.attr2-level,
+input.duration,
+input.time,
+input.descriptives,
+input.equip-name,
+input.saveload-file {
+  background-color: #e8eeef;
+  color: #3f3d74;
+  font-size: 14px;
+  outline: 0;
+  padding: 7px;
+  box-shadow: 0 1px 0 #F8F8F8 inset;
+  -webkit-box-shadow: 0 1px 0 #F8F8F8 inset;
+  -moz-box-shadow: 0 1px 0 #F8F8F8 inset;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* line 51, ../scss/modules/_input.scss */
+input.name,
+input.descriptives,
+input.equip-name,
+input.level,
+select.skill-difficulty,
+select.skill-type,
+input.level,
+input.cost,
+input.time,
+input.duration,
+input.attr2-level,
+select {
+  width: 100%;
+}
+
+/* line 55, ../scss/modules/_input.scss */
+input.saveload-file {
+  width: 100%;
+}
+
+/* line 59, ../scss/modules/_input.scss */
+input.cost, input.cost textarea, input.cost select, select {
+  background-color: #e8eeef;
+  color: #3F3D74;
+  border: none;
+  font-size: 14px;
+  outline: 0;
+  padding: 7px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-shadow: 0 1px 0 #F8F8F8 inset;
+  -webkit-box-shadow: 0 1px 0 #F8F8F8 inset;
+  -moz-box-shadow: 0 1px 0 #F8F8F8 inset;
+}
+
+/* line 74, ../scss/modules/_input.scss */
+input:focus, select:focus {
+  background: #d2d9dd;
+}
+
+/* line 79, ../scss/modules/_input.scss */
+input[type="submit"],
+input[type="button"] {
+  position: relative;
+  display: block;
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  margin: 0 auto;
+  background: #1abc9c;
+  font-size: 14px;
+  text-align: center;
+  font-style: normal;
+  width: 100%;
+  border: 1px solid #16a085;
+  border-width: 1px 1px 3px;
+  margin-bottom: 10px;
+}
+
+/* line 96, ../scss/modules/_input.scss */
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  background: #109177;
+}
+
+/* line 100, ../scss/modules/_input.scss */
+input:disabled {
+  background-color: #DFE7E9;
+}
+
+/*------------------------------------------------*/
+/* MOBILE VERSION (PORTRAIT)                      */
+/*------------------------------------------------*/
+@media only screen and (max-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* line 109, ../scss/modules/_input.scss */
+  input, select {
+    height: 75px;
+  }
+
+  /* line 113, ../scss/modules/_input.scss */
+  option {
+    font-size: 0.4em;
+  }
+
+  /* line 125, ../scss/modules/_input.scss */
+  input.name,
+  input.type,
+  input.default,
+  input.level,
+  input.attr2-level,
+  input.duration,
+  input.time,
+  input.descriptives,
+  input.equip-name {
+    background: white;
+    border: none;
+    border-radius: 4px;
+    margin: 0px 5px 10px 0px;
+    outline: 0;
+    padding: 7px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #e8eeef;
+    color: #3f3d74;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0) inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0) inset;
+  }
+
+  /* line 142, ../scss/modules/_input.scss */
+  input.name,
+  input.equip-name {
+    width: 90%;
+  }
+
+  /* line 146, ../scss/modules/_input.scss */
+  input.level {
+    width: 130px;
+  }
+
+  /* line 150, ../scss/modules/_input.scss */
+  input.type {
+    width: 120px;
+  }
+
+  /* line 154, ../scss/modules/_input.scss */
+  input.default {
+    width: 105px;
+  }
+
+  /* line 158, ../scss/modules/_input.scss */
+  input.time {
+    width: 74%;
+    margin: 0px 5px 10px 0px;
+  }
+
+  /* line 163, ../scss/modules/_input.scss */
+  input.descriptives {
+    width: 100%;
+  }
+
+  /* line 167, ../scss/modules/_input.scss */
+  input.attr2-level {
+    width: 130px;
+  }
+
+  /* line 171, ../scss/modules/_input.scss */
+  select.skill-difficulty {
+    width: 44%;
+    margin: 0px 5px 10px 0px;
+  }
+
+  /* line 176, ../scss/modules/_input.scss */
+  select.skill-type {
+    width: 30%;
+  }
+
+  /* line 180, ../scss/modules/_input.scss */
+  select.spell-type {
+    width: 74%;
+    margin: 0px 5px 10px 0px;
+  }
+
+  /* line 185, ../scss/modules/_input.scss */
+  input.duration {
+    width: 64%;
+    margin: 0 0 10px 0;
+  }
+
+  /* line 193, ../scss/modules/_input.scss */
+  input.cost,
+  input.cost textarea,
+  input.cost select,
+  select {
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    border-radius: 4px;
+    margin: 0px 5px 10px 0px;
+    outline: 0;
+    padding: 7px;
+    width: 12%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #e8eeef;
+    color: #3F3D74;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0) inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0) inset;
+  }
+
+  /* line 211, ../scss/modules/_input.scss */
+  input:focus,
+  select:focus {
+    background: #d2d9dd;
+  }
+
+  /* line 216, ../scss/modules/_input.scss */
+  input[type="submit"],
+  input[type="button"] {
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background: #1abc9c;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+  }
+
+  /* line 232, ../scss/modules/_input.scss */
+  input[type="submit"]:hover,
+  input[type="button"]:hover {
+    background: #109177;
+  }
+
+  /* line 236, ../scss/modules/_input.scss */
+  input:disabled {
+    background-color: rgba(147, 175, 180, 0);
+  }
+
+  /* line 246, ../scss/modules/_input.scss */
+  input.descriptives,
+  input.name,
+  input.level,
+  input.cost,
+  input.attr2-level,
+  input.equip-name,
+  .plusminus {
+    font-size: 1.7em;
+  }
+
+  /* line 250, ../scss/modules/_input.scss */
+  input[type="checkbox"] {
+    display: none;
+  }
+}
+/*------------------------------------------------*/
+/* PRINT VERSION                                  */
+/*------------------------------------------------*/
+@media print {
+  /* line 261, ../scss/modules/_input.scss */
+  input,
+  select {
+    background-color: #f4f4f4;
+    color: #000;
+    border-radius: 0px;
+    border: 1px solid #fff;
+    /*border-bottom: 1px solid grey;*/
+  }
+
+  /* line 269, ../scss/modules/_input.scss */
+  input.name, input.type, input.default, input.level, input.attr2-level, input.duration, input.time, input.descriptives, input.equip-name {
+    color: #000080;
+    border: none;
+    border-bottom: 1px solid grey;
+    border-radius: 0px;
+    margin: 0px 5px 0px 0px;
+    padding: 0px;
+    outline: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-shadow: 0 0px 0 rgba(0, 0, 0, 0) inset;
+    box-shadow: 0 0px 0 rgba(0, 0, 0, 0) inset;
+    background-color: white;
+  }
+
+  /* line 285, ../scss/modules/_input.scss */
+  input.cost, .cost textarea, .cost select, select {
+    color: #000080;
+    border: none;
+    border-bottom: 1px solid grey;
+    border-radius: 0px;
+    margin: 0px 5px 0px 0px;
+    padding: 0px;
+    outline: 0;
+    width: 40px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-shadow: 0 0px 0 rgba(0, 0, 0, 0) inset;
+    box-shadow: 0 0px 0 rgba(0, 0, 0, 0) inset;
+    background-color: white;
+  }
+
+  /* line 302, ../scss/modules/_input.scss */
+  select.spell-type {
+    width: 100px;
+    margin: 0px;
+    border-bottom: 0;
+  }
+
+  /* line 308, ../scss/modules/_input.scss */
+  select.skill-type {
+    width: 60px;
+    margin: 0px;
+    border-bottom: 0;
+  }
+
+  /* line 314, ../scss/modules/_input.scss */
+  select.skill-difficulty {
+    width: 100px;
+    margin: 0px;
+    border-bottom: 0;
+  }
+
+  /* line 320, ../scss/modules/_input.scss */
+  input.duration {
+    width: 80px;
+  }
+
+  /* line 324, ../scss/modules/_input.scss */
+  ::-webkit-input-placeholder {
+    color: transparent;
+  }
+
+  /* line 327, ../scss/modules/_input.scss */
+  :-moz-placeholder {
+    color: transparent;
+  }
+
+  /* line 330, ../scss/modules/_input.scss */
+  ::-moz-placeholder {
+    color: transparent;
+  }
+
+  /* line 333, ../scss/modules/_input.scss */
+  :-ms-input-placeholder {
+    color: transparent;
+  }
+
+  /* line 337, ../scss/modules/_input.scss */
+  input[type=number] {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+  }
+}
+/* line 1, ../scss/modules/_lists.scss */
+ul {
+  list-style-type: none;
+}
+
+/*------------------------------------------------*/
+/* MOBILE VERSION (PORTRAIT)                      */
+/*------------------------------------------------*/
+@media only screen and (max-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* line 10, ../scss/modules/_lists.scss */
+  ul {
+    list-style-type: none;
+  }
+
+  /* line 14, ../scss/modules/_lists.scss */
+  li {
+    margin: 0px 0px 30px 0px;
+    border-bottom: 4px solid lightgrey;
+  }
+}
+/*------------------------------------------------*/
+/* PRINT VERSION                                  */
+/*------------------------------------------------*/
+/*headings, special heading classes, different colors*/
+/* line 6, ../scss/modules/_typography.scss */
+body,
+input,
+a.tooltip,
+div.tooltip-symbol,
+.tooltip:hover:after {
+  font-family: 'Open Sans', sans-serif, Georgia, "Times New Roman", Times, serif;
+}

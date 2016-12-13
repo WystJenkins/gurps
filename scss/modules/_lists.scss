@@ -1,0 +1,26 @@
+ul {
+	list-style-type: none;
+}
+
+/*------------------------------------------------*/
+/* MOBILE VERSION (PORTRAIT)                      */
+/*------------------------------------------------*/
+
+@include media-screen-portrait(){
+	ul {
+		list-style-type: none;
+	}
+
+	li {
+		margin: 0px 0px 30px 0px;
+		border-bottom: 4px solid lightgrey;
+	}
+}
+
+/*------------------------------------------------*/
+/* PRINT VERSION                                  */
+/*------------------------------------------------*/
+
+@media print {
+
+}

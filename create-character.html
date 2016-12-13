@@ -1,0 +1,748 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="author" content="MT Fischer">
+
+		<title>GURPS</title>
+
+		<link rel="shortcut icon" type="image/x-icon" href="img/G.PNG">
+		<link href="libraries/bootstrap/bootstrap.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<link href="libraries/sweetalert-master/dist/sweetalert.css" rel='stylesheet' type='text/css'>
+		<link href="css/main.css" type="text/css" rel="stylesheet">
+
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="js/create-character.js"></script>
+		<script src="libraries/bootstrap/bootstrap.js"></script>
+		<script src="libraries/sweetalert-master/dist/sweetalert.min.js"></script>
+		<script src="libraries/jquery-2.2.0.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<div id="unicorn-button">activate unicorn</div>
+			<h1 id="head">GURPS: Create A Character</h1>
+		</header>
+
+		<div id="content">
+			<div class="row">
+				<div class="buttonwrap-top">
+					<div class="col-xs-3">
+						<button type="button" class="setgetbuttons" id="get-data-button">📂 Load from browser</button>
+					</div>
+					<div class="col-xs-3">
+						<button type="button" class="setgetbuttons" id="save-button">💾 Save to browser</button>
+					</div>
+					<div class="col-xs-3">
+						<button type="button" class="setgetbuttons" id="delete-data-button">⌫ Delete Character Data</button>
+					</div>
+					<div class="col-xs-3">
+						<button type="button" class="printbuttons" onclick="window.print();return false;">Print as PDF</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="saveload-button-wrapper">
+				<div class="row">
+					<div class="col-xs-6">
+						<span class="saveload-text">Save File:</span>
+						<input type="text" id="input-file-name" class="saveload-file">
+					</div>
+					<div class="col-xs-2">
+						<br/>
+						<button id="save-file-as-text" class="saveload-buttons">Save as Textfile</button>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-6">
+						<span class="saveload-text">Load File:</span>
+						<input type="file" id="file-to-load" name="upload-char-data" class="saveload-file">
+					</div>
+					<div class="col-xs-2">
+						<br/>
+						<button id="load-file-as-text" class="saveload-buttons">Load File</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="cost-total">
+				<div class="row">
+					<div class="col-xs-3">
+						<span class="points-head">Points total: <span id="points-total-head">0</span></span>
+					</div>
+					<div class="col-xs-3">
+						<span class="points-head">Positive Points: <span id="positive-total-head">0</span></span>
+					</div>
+					<div class="col-xs-3">
+						<span class="points-head">Negative Points: <span id="negative-total-head">0</span></span>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- CHARACTER NAME -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Character Name</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<input type="text" class="descriptives" id="name">
+				</div>
+			</div>
+
+			<!-- PRIMARY ATTRIBUTES -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Attributes
+						<a class="tooltip" title="Only the Attribute's level needs to be changed. The right Costs will be inserted automatically.">
+							<div class="tooltip-symbol" id="tooltip1" title="">ⓘ</div>
+						</a>
+					</h2>
+				</div>
+			</div>
+
+			<div class="row headline">
+				<div class="col-xs-3">
+					Attribute
+				</div>
+				<div class="col-xs-1">
+					Level
+				</div>
+				<div class="col-xs-1">
+					Cost
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Strength</div>
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="1" max="100" step="1" class="level" id="attr-level0" value="10">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" class="cost" id="attr-cost0" disabled>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Dexterity</div>
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="1" max="100" step="1" class="level" id="attr-level1" value="10">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" class="cost" id="attr-cost1" disabled>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">IQ</div>
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="1" max="100" step="1" class="level" id="attr-level2" value="10">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" class="cost" id="attr-cost2" disabled>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Health</div>
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="1" max="100" step="1" class="level" id="attr-level3" value="10">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" class="cost" id="attr-cost3" disabled>
+				</div>
+			</div>
+
+
+			<!-- SECONDARY CHARACTERISTICS -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Secondary Characteristics
+						<a class="tooltip" title="If you want to change the value of a secondary attribute, please check the box on the right. Clicking the checkbox will disable the automatic count and inserting of this value.">
+							<div class="tooltip-symbol" id="tooltip2" title="">ⓘ</div>
+						</a>
+					</h2>
+				</div>
+			</div>
+
+			<div class="row headline">
+				<div class="col-xs-3">
+					Name
+				</div>
+				<div class="col-xs-3">
+					Formular
+				</div>
+				<div class="col-xs-2">
+					Value
+				</div>
+				<div class="col-xs-1">
+					Cost
+				</div>
+				<div class="col-xs-2">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Hit Points</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="attr-formular">HP = ST</div>
+				</div>
+				<div class="col-xs-2">
+					<input type="number" min="1" max="100" step="1" class="attr2-level" id="attr2-level0" value="10">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="-200" max="200" step="1" class="cost" id="attr2-cost0">
+				</div>
+				<div class="col-xs-2">
+					<label class="custom-value" id="custom-value0"><input type="checkbox" id="attr2-checkbox0" name="checkbox" value="checkbox">custom value</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Will</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="attr-formular">Will = IQ</div>
+				</div>
+				<div class="col-xs-2">
+					<input type="number" min="1" max="100" step="1" class="attr2-level" id="attr2-level1" value="10">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="-200" max="200" step="1" class="cost" id="attr2-cost1">
+				</div>
+				<div class="col-xs-2">
+					<label class="custom-value" id="custom-value1"><input type="checkbox" id="attr2-checkbox1" name="checkbox" value="checkbox">custom value</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Perception</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="attr-formular">Per = IQ</div>
+				</div>
+				<div class="col-xs-2">
+					<input type="number" min="1" max="100" step="1" class="attr2-level" id="attr2-level2" value="10">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="-200" max="200" step="1" class="cost" id="attr2-cost2">
+				</div>
+				<div class="col-xs-2">
+					<label class="custom-value" id="custom-value2"><input type="checkbox" id="attr2-checkbox2" name="checkbox" value="checkbox">custom value</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Fatigue Points</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="attr-formular">FP = HT</div>
+				</div>
+				<div class="col-xs-2">
+					<input type="number" min="1" max="100" step="1" class="attr2-level" id="attr2-level3" value="10">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="-200" max="200" step="1" class="cost" id="attr2-cost3">
+				</div>
+				<div class="col-xs-2">
+					<label class="custom-value" id="custom-value3"><input type="checkbox" id="attr2-checkbox3" name="checkbox" value="checkbox">custom value</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Basic Speed</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="attr-formular">(HT+DX)/4</div>
+				</div>
+				<div class="col-xs-2">
+					<input type="number" min="1" max="100" step="1" class="attr2-level" id="attr2-level4" value="5">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="-200" max="200" step="1" class="cost" id="attr2-cost4">
+				</div>
+				<div class="col-xs-2">
+					<label class="custom-value" id="custom-value4"><input type="checkbox" id="attr2-checkbox4" name="checkbox" value="checkbox">custom value</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Basic Move</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="attr-formular">Move = Speed</div>
+				</div>
+				<div class="col-xs-2">
+					<input type="number" min="1" max="100" step="1" class="attr2-level" id="attr2-level5" value="5">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="-200" max="200" step="1" class="cost" id="attr2-cost5">
+				</div>
+				<div class="col-xs-2">
+					<label class="custom-value" id="custom-value5"><input type="checkbox" id="attr2-checkbox5" name="checkbox" value="checkbox">custom value</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Dodge</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="attr-formular">Speed+3</div>
+				</div>
+				<div class="col-xs-2">
+					<input type="number" min="1" max="100" step="1" class="attr2-level" id="attr2-level6" value="8">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="-200" max="200" step="1" class="cost" id="attr2-cost6">
+				</div>
+				<div class="col-xs-2">
+					<label class="custom-value" id="custom-value6"><input type="checkbox" id="attr2-checkbox6" name="checkbox" value="checkbox">custom value</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Basic Lift</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="attr-formular">(ST*ST)/5</div>
+				</div>
+				<div class="col-xs-2">
+					<input type="number" min="1" max="100" step="1" class="attr2-level" id="attr2-level7" value="20">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="-200" max="200" step="1" class="cost" id="attr2-cost7">
+				</div>
+				<div class="col-xs-2">
+					<label class="custom-value" id="custom-value7"><input type="checkbox" id="attr2-checkbox7" name="checkbox" value="checkbox">custom value</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Damage: Thrust</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="attr-formular">dice+adds</div>
+				</div>
+				<div class="col-xs-2">
+					<input type="text" class="attr2-level" id="attr2-level8" value="1d-2">
+				</div>
+				<div class="col-xs-3">
+					<div class="hidden-stuff">
+						Cost: <input type="number" min="-200" max="200" step="1" class="cost" id="attr2-cost8">
+						<label class="custom-value" id="custom-value8">
+						<input type="checkbox" id="attr2-checkbox8" name="checkbox" value="checkbox">custom value</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="attr-name">Damage: Swing</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="attr-formular">dice+adds</div>
+				</div>
+				<div class="col-xs-2">
+					<input type="text" class="attr2-level" id="attr2-level9" value="1d">
+				</div>
+				<div class="col-xs-3">
+					<div class="hidden-stuff">
+						Cost: <input type="number" min="-200" max="200" step="1" class="cost" id="attr2-cost9">
+						<label class="custom-value" id="custom-value9">
+						<input type="checkbox" id="attr2-checkbox9" name="checkbox" value="checkbox">custom value</label>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- ADVANTAGES -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Advantages</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="buttonwrap" id="buttonwrap-adv">
+					<div class="col-xs-2">
+						<button type="button" class="plusminus" value="-" id="advminus">-</button>
+						<button type="button" class="plusminus" value="+" id="advplus">+</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="row headline">
+				<div class="col-xs-4">
+					Name
+				</div>
+				<div class="col-xs-1">
+					Cost
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-4">
+					<input type="text" class="name" id="adv-name0" placeholder="Name/Description">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="0" max="200" step="1" class="cost" id="adv-cost0">
+				</div>
+			</div>
+
+			<div id="adv-dynamic"></div>
+
+
+			<!-- PERKS -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Perks</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="buttonwrap" id="buttonwrap-perk">
+					<div class="col-xs-2">
+						<button type="button" class="plusminus" value="-" id="perkminus">-</button>
+						<button type="button" class="plusminus" value="+" id="perkplus">+</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="row headline">
+				<div class="col-xs-4">
+					Name
+				</div>
+				<div class="col-xs-1">
+					Cost
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-4">
+					<input type="text" class="name" id="perk-name0" placeholder="Name/Description">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="0" max="1" step="1" class="cost" id="perk-cost0">
+				</div>
+			</div>
+
+			<div id="perk-dynamic"></div>
+
+
+			<!-- DISADVANTAGES-->
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Disadvantages</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="buttonwrap" id="buttonwrap-disadv">
+					<div class="col-xs-2">
+						<button type="button" class="plusminus" value="-" id="disadvminus">-</button>
+						<button type="button" class="plusminus" value="+" id="disadvplus">+</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="row headline">
+				<div class="col-xs-4">
+					Name
+				</div>
+				<div class="col-xs-1">
+					Cost
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-4">
+					<input type="text" class="name" id="disadv-name0" placeholder="Name/Description">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="-200" max="0" step="1" class="cost" id="disadv-cost0">
+				</div>
+			</div>
+
+			<div id="disadv-dynamic"></div>
+
+
+			<!-- QUIRKS -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Quirks</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="buttonwrap" id="buttonwrap-quirk">
+					<div class="col-xs-2">
+						<button type="button" class="plusminus" value="-" id="quirkminus">-</button>
+						<button type="button" class="plusminus" value="+" id="quirkplus">+</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="row headline">
+				<div class="col-xs-4">
+					Name
+				</div>
+				<div class="col-xs-1">
+					Cost
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-4">
+					<input type="text" class="name" id="quirk-name0" placeholder="Name/Description">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="-1" max="0" step="1" class="cost" id="quirk-cost0">
+				</div>
+			</div>
+
+			<div id="quirk-dynamic"></div>
+
+
+			<!-- SKILLS -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Skills
+						<a class="tooltip" title="Please add Type, Difficulty and Level first, then click COUNT to automatically insert the Costs.">
+							<div class="tooltip-symbol" id="tooltip2" title="">ⓘ</div>
+						</a>
+					</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="buttonwrap" id="buttonwrap-skill">
+					<div class="col-xs-2">
+						<button type="button" class="plusminus" value="-" id="skillminus">-</button>
+						<button type="button" class="plusminus" value="+" id="skillplus">+</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="row headline">
+				<div class="col-xs-4">
+					Name
+				</div>
+				<div class="col-xs-2">
+					Type
+				</div>
+				<div class="col-xs-2">
+					Difficulty
+				</div>
+				<div class="col-xs-1">
+					Level
+				</div>
+				<div class="col-xs-1">
+					Cost
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-4">
+					<input type="text" class="name" id="skill-name0" placeholder="Name/Description">
+				</div>
+				<div class="col-xs-2">
+					<select class="skill-type" id="skill-type0">
+						<option value=""></option>
+						<option value="dx">DX</option>
+						<option value="iq">IQ</option>
+						<option value="will">Will</option>
+						<option value="per">Per</option>
+						<option value="ht">HT</option>
+					</select>
+				</div>
+				<div class="col-xs-2">
+					<select class="skill-difficulty" id="skill-difficulty0">
+						<option value=""></option>
+						<option value="easy">Easy</option>
+						<option value="average">Average</option>
+						<option value="hard">Hard</option>
+						<option value="veryhard">Very Hard</option>
+					</select>
+				</div>
+				<div class="col-xs-1">
+					<input type="number" min="0" max="200" step="1" class="level" id="skill-level0">
+				</div>
+				<div class="col-xs-1">
+					<input type="number" class="cost" id="skill-cost0" disabled>
+				</div>
+			</div>
+
+			<div id="skill-dynamic"></div>
+
+
+			<!-- SPELLBUTTON -->
+			<div class="row">
+				<div class="col-xs-5">
+					<h2 class="buttonwrap">
+						<button type="button" id="spellbutton">For I shall wield magic!</button>
+					</h2>
+				</div>
+			</div>
+
+
+			<!-- SPELLS -->
+			<span class="hidden-stuff" id="spellwrap">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Spells</h2>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="buttonwrap" id="buttonwrap-spell">
+						<div class="col-xs-2">
+							<button type="button" class="plusminus" value="-" id="spellminus">-</button>
+									<button type="button" class="plusminus" value="+" id="spellplus">+</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="row headline">
+					<div class="col-xs-4">
+						Name
+					</div>
+					<div class="col-xs-2">
+						Class
+					</div>
+					<div class="col-xs-2">
+						Time
+					</div>
+					<div class="col-xs-2">
+						Duration
+					</div>
+					<div class="col-xs-1">
+						Level
+					</div>
+					<div class="col-xs-1">
+						Cost
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-4">
+						<input type="text" class="name" id="spell-name0" placeholder="Name/Description">
+					</div>
+					<div class="col-xs-2">
+						<select class="spell-type" id="spell-type0">
+							<option value=""></option>
+							<option value="regular">Regular</option>
+							<option value="area">Area</option>
+							<option value="melee">Melee</option>
+							<option value="missile">Missile</option>
+							<option value="information">Information</option>
+							<option value="resisted">Resisted</option>
+							<option value="special">Special</option>
+						</select>
+					</div>
+					<div class="col-xs-2">
+						<input type="text" class="time" id="spell-time0">
+					</div>
+					<div class="col-xs-2">
+						<input type="text" class="duration" id="spell-duration0">
+					</div>
+					<div class="col-xs-1">
+						<input type="number" min="0" max="200" step="1" class="level" id="spell-level0">
+					</div>
+					<div class="col-xs-1">
+						<input type="number" min="0" max="200" step="1" class="cost" id="spell-cost0">
+					</div>
+				</div>
+
+				<div id="spell-dynamic"></div>
+			</span>
+
+			<!-- WEAPONS AND EQUIPMENT -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Weapons and Equipment</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="buttonwrap" id="buttonwrap-equip">
+					<div class="col-xs-2">
+						<button type="button" class="plusminus" value="-" id="equipminus">-</button>
+						<button type="button" class="plusminus" value="+" id="equipplus">+</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="row headline">
+				<div class="col-xs-12">
+					Name
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<input type="text" class="equip-name" id="equip-name0" placeholder="Name/Description">
+				</div>
+			</div>
+
+			<div id="equip-dynamic"></div>
+
+
+			<!-- NOTES -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Notes</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<textarea rows="4" cols="100" class="notes" id="notes"></textarea>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12"></div>
+			</div>
+
+			<!-- TOTAL COST BOTTOM -->
+			<div class="cost-total" id="cost-total-bottom">
+				<div class="row">
+					<div class="col-xs-3">
+						<span class="points-bottom">Points total: <span id="points-total-bottom">0</span></span>
+					</div>
+					<div class="col-xs-3">
+						<span class="points-bottom">Positive Points: <span id="positive-total-bottom">0</span></span>
+					</div>
+					<div class="col-xs-3">
+						<span class="points-bottom">Negative Points: <span id="negative-total-bottom">0</span></span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Add Notes-->
+			<div class="comment-button hidden-stuff" id="comment-button" >+</div>
+
+			<!-- UNICORN IMAGE -->
+			<img src="img/pinky.gif" class="unicorn hidden-stuff" id="unicorn">
+		</div>
+	</body>
+</html>
