@@ -344,7 +344,7 @@ function addFieldsSpell() {
 	var inputTimeDuration = document.createElement("input");
 	inputTimeDuration.type = "text";
 	inputTimeDuration.className = "time-duration";
-	inputTimeDuration.id = "spell-time-duration" + count;
+	inputTimeDuration.id = "time-duration" + count;
 
 
 	var divLevel = document.createElement("div");

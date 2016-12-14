@@ -1,54 +1,52 @@
 form {
-	margin: 0px;
-	padding: 0px;
+	margin : 0;
+	padding: 0;
 	display: inline;
 }
 
 input {
 	border-radius: 3px;
-	border: none;
+	border       : none;
 }
 
 select {
-	height: 36px;
+	height       : 36px;
 	border-radius: 3px;
 }
 
-input.name,
-input.type,
+input.attr2-level,
 input.default,
-input.level,
-input.attr2-level,
-input.duration,
-input.time,
 input.descriptives,
 input.equip-name,
-input.saveload-file {
-	background-color: rgb(232, 238, 239);
-	color: rgb(63, 61, 116);
-	font-size: $input-font-size;
-	outline: 0;
-	padding: 7px;
-	box-shadow: 0 1px 0 #F8F8F8 inset;
-	-webkit-box-shadow: 0 1px 0 #F8F8F8 inset;
-	-moz-box-shadow: 0 1px 0 #F8F8F8 inset;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-}
-
+input.level,
 input.name,
+input.saveload-file,
+input.time-duration,
+input.type {
+	background-color  : rgb(232, 238, 239);
+	color             : rgb(63, 61, 116);
+	font-size         : $input-font-size;
+	outline           : 0;
+	padding           : 7px;
+	box-shadow        : 0 1px 0 #F8F8F8 inset;
+	-webkit-box-shadow: 0 1px 0 #F8F8F8 inset;
+	-moz-box-shadow   : 0 1px 0 #F8F8F8 inset;
+	box-sizing        : border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing   : border-box;
+}
+
+input.attr2-level,
+input.cost,
 input.descriptives,
 input.equip-name,
 input.level,
-select.skill-difficulty,
-select.skill-type,
 input.level,
-input.cost,
-input.time,
-input.duration,
-input.attr2-level,
-select {
+input.name,
+input.time-duration,
+select,
+select.skill-difficulty,
+select.skill-type {
 	width: 100%;
 }
 
@@ -56,57 +54,60 @@ input.saveload-file {
 	width: 100%;
 }
 
-input.cost, input.cost textarea, input.cost select, select {
-	background-color: #e8eeef;
-	color: #3F3D74;
-	border: none;
-	font-size: $input-font-size;
-	outline: 0;
-	padding: 7px;
-	box-sizing: border-box;
+input.cost,
+input.cost select,
+input.cost textarea,
+select {
+	background-color  : #e8eeef;
+	color             : #3F3D74;
+	border            : none;
+	font-size         : $input-font-size;
+	outline           : 0;
+	padding           : 7px;
+	box-sizing        : border-box;
 	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-shadow: 0 1px 0 #F8F8F8 inset;
+	-moz-box-sizing   : border-box;
+	box-shadow        : 0 1px 0 #F8F8F8 inset;
 	-webkit-box-shadow: 0 1px 0 #F8F8F8 inset;
-	-moz-box-shadow: 0 1px 0 #F8F8F8 inset;
+	-moz-box-shadow   : 0 1px 0 #F8F8F8 inset;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
 	background: $input-focus-color;
 }
 
-input[type="submit"],
-input[type="button"] {
-	position: relative;
-	display: block;
-	padding: 19px 39px 18px 39px;
-	color: #FFF;
-	margin: 0 auto;
-	background: #1abc9c;
-	font-size: $input-font-size;
-	text-align: center;
-	font-style: normal;
-	width: 100%;
-	border: 1px solid #16a085;
-	border-width: 1px 1px 3px;
+input[type="button"],
+input[type="submit"] {
+	position     : relative;
+	display      : block;
+	padding      : 19px 39px 18px;
+	color        : #FFF;
+	margin       : 0 auto;
+	background   : #1abc9c;
+	font-size    : $input-font-size;
+	text-align   : center;
+	font-style   : normal;
+	width        : 100%;
+	border       : 1px solid #16a085;
+	border-width : 1px 1px 3px;
 	margin-bottom: 10px;
 }
 
-input[type="submit"]:hover,
-input[type="button"]:hover {
+input[type="button"]:hover,
+input[type="submit"]:hover {
 	background: #109177;
 }
 
 input:disabled {
 	background-color: #DFE7E9;
 }
-
 /*------------------------------------------------*/
 /* MOBILE VERSION (PORTRAIT)                      */
 /*------------------------------------------------*/
-
 @include media-screen-portrait() {
-	input, select {
+	input,
+	select {
 		height: 75px;
 	}
 
@@ -114,32 +115,31 @@ input:disabled {
 		font-size: 0.4em;
 	}
 
-	input.name,
-	input.type,
-	input.default,
-	input.level,
 	input.attr2-level,
-	input.duration,
-	input.time,
+	input.default,
 	input.descriptives,
-	input.equip-name {
-		background: white;
-		border: none;
-		border-radius: 4px;
-		margin: 0px 5px 10px 0px;
-		outline: 0;
-		padding: 7px;
-		box-sizing: border-box;
+	input.equip-name,
+	input.level,
+	input.name,
+	input.time-duration,
+	input.type {
+		background        : white;
+		border            : none;
+		border-radius     : 4px;
+		margin            : 0 5px 10px 0;
+		outline           : 0;
+		padding           : 7px;
+		box-sizing        : border-box;
 		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		background-color: rgba(232, 238, 239, 1);
-		color: rgba(63, 61, 116, 1);
+		-moz-box-sizing   : border-box;
+		background-color  : rgba(232, 238, 239, 1);
+		color             : rgba(63, 61, 116, 1);
 		-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-		box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+		box-shadow        : 0 1px 0 rgba(0,0,0,0.03) inset;
 	}
 
-	input.name,
-	input.equip-name {
+	input.equip-name,
+	input.name {
 		width: 90%;
 	}
 
@@ -156,12 +156,12 @@ input:disabled {
 	}
 
 	input.time {
-		width: 74%;
-		margin: 0px 5px 10px 0px;
+		width : 74%;
+		margin: 0 5px 10px 0;
 	}
 
 	input.descriptives {
-		width:100%;
+		width: 100%;
 	}
 
 	input.attr2-level {
@@ -169,8 +169,8 @@ input:disabled {
 	}
 
 	select.skill-difficulty {
-		width: 44%;
-		margin: 0px 5px 10px 0px;
+		width : 44%;
+		margin: 0 5px 10px 0;
 	}
 
 	select.skill-type {
@@ -178,33 +178,33 @@ input:disabled {
 	}
 
 	select.spell-type {
-		width: 74%;
-		margin: 0px 5px 10px 0px;
+		width : 74%;
+		margin: 0 5px 10px 0;
 	}
 
-	input.duration {
-		width: 64%;
-		margin: 0 0 10px 0;
+	input.time-duration {
+		width : 64%;
+		margin: 0 0 10px;
 	}
 
 	input.cost,
-	input.cost textarea,
 	input.cost select,
+	input.cost textarea,
 	select {
-		background: rgba(255,255,255,.1);
-		border: none;
-		border-radius: 4px;
-		margin: 0px 5px 10px 0px;
-		outline: 0;
-		padding: 7px;
-		width: 12%;
-		box-sizing: border-box;
+		background        : rgba(255,255,255,.1);
+		border            : none;
+		border-radius     : 4px;
+		margin            : 0 5px 10px 0;
+		outline           : 0;
+		padding           : 7px;
+		width             : 12%;
+		box-sizing        : border-box;
 		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		background-color: #e8eeef;
-		color: #3F3D74;
+		-moz-box-sizing   : border-box;
+		background-color  : #e8eeef;
+		color             : #3F3D74;
 		-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-		box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+		box-shadow        : 0 1px 0 rgba(0,0,0,0.03) inset;
 	}
 
 	input:focus,
@@ -212,24 +212,24 @@ input:disabled {
 		background: #d2d9dd;
 	}
 
-	input[type="submit"],
-	input[type="button"]{
-		position: relative;
-		display: block;
-		padding: 19px 39px 18px 39px;
-		color: #FFF;
-		margin: 0 auto;
-		background: #1abc9c;
-		text-align: center;
-		font-style: normal;
-		width: 100%;
-		border: 1px solid #16a085;
-		border-width: 1px 1px 3px;
+	input[type="button"],
+	input[type="submit"] {
+		position     : relative;
+		display      : block;
+		padding      : 19px 39px 18px;
+		color        : #FFF;
+		margin       : 0 auto;
+		background   : #1abc9c;
+		text-align   : center;
+		font-style   : normal;
+		width        : 100%;
+		border       : 1px solid #16a085;
+		border-width : 1px 1px 3px;
 		margin-bottom: 10px;
 	}
 
-	input[type="submit"]:hover,
-	input[type="button"]:hover {
+	input[type="button"]:hover,
+	input[type="submit"]:hover {
 		background: #109177;
 	}
 
@@ -237,107 +237,117 @@ input:disabled {
 		background-color: rgba(147, 175, 180, 0.3);
 	}
 
-	input.descriptives,
-	input.name,
-	input.level,
-	input.cost,
+	.plusminus,
 	input.attr2-level,
+	input.cost,
+	input.descriptives,
 	input.equip-name,
-	.plusminus {
-		font-size:1.7em;
+	input.level,
+	input.name {
+		font-size: 1.7em;
 	}
 
 	input[type="checkbox"] {
 		display: none;
 	}
 }
-
 /*------------------------------------------------*/
 /* PRINT VERSION                                  */
 /*------------------------------------------------*/
-
 @media print {
 	input,
 	select {
 		background-color: #f4f4f4;
-		color: #000;
-		border-radius: 0px;
-		border: 1px solid #fff;
+		color           : #000;
+		border-radius   : 0;
+		border          : 1px solid #fff;
 		/*border-bottom: 1px solid grey;*/
 	}
 
-	input.name, input.type, input.default, input.level, input.attr2-level, input.duration, input.time, input.descriptives, input.equip-name {
-		color: #000080;
-		border: none;
-		border-bottom: 1px solid grey;
-		border-radius: 0px;
-		margin: 0px 5px 0px 0px;
-		padding: 0px;
-		outline: 0;
-		box-sizing: border-box;
+	input.attr2-level,
+	input.default,
+	input.descriptives,
+	input.equip-name,
+	input.level,
+	input.name,
+	input.time-duration,
+	input.type {
+		color             : #000080;
+		border            : none;
+		border-bottom     : 1px solid grey;
+		border-radius     : 0;
+		margin            : 0 5px 0 0;
+		padding           : 0;
+		outline           : 0;
+		box-sizing        : border-box;
 		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		-webkit-box-shadow: 0 0px 0 rgba(0,0,0,0) inset;
-		box-shadow: 0 0px 0 rgba(0,0,0,0) inset;
-		background-color: white;
+		-moz-box-sizing   : border-box;
+		-webkit-box-shadow: 0 0 0 rgba(0,0,0,0) inset;
+		box-shadow        : 0 0 0 rgba(0,0,0,0) inset;
+		background-color  : white;
 	}
 
-	input.cost, .cost textarea, .cost select, select {
-		color: #000080;
-		border: none;
-		border-bottom: 1px solid grey;
-		border-radius: 0px;
-		margin: 0px 5px 0px 0px;
-		padding: 0px;
-		outline: 0;
-		width: 40px;
-		box-sizing: border-box;
+	.cost select,
+	.cost textarea,
+	input.cost,
+	select {
+		color             : #000080;
+		border            : none;
+		border-bottom     : 1px solid grey;
+		border-radius     : 0;
+		margin            : 0 5px 0 0;
+		padding           : 0;
+		outline           : 0;
+		width             : 40px;
+		box-sizing        : border-box;
 		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		-webkit-box-shadow: 0 0px 0 rgba(0,0,0,0) inset;
-		box-shadow: 0 0px 0 rgba(0,0,0,0) inset;
-		background-color: white;
+		-moz-box-sizing   : border-box;
+		-webkit-box-shadow: 0 0 0 rgba(0,0,0,0) inset;
+		box-shadow        : 0 0 0 rgba(0,0,0,0) inset;
+		background-color  : white;
 	}
 
 	select.spell-type {
-		width: 100px;
-		margin: 0px;
+		width        : 100px;
+		margin       : 0;
 		border-bottom: 0;
 	}
 
 	select.skill-type {
-		width: 60px;
-		margin: 0px;
+		width        : 60px;
+		margin       : 0;
 		border-bottom: 0;
 	}
 
 	select.skill-difficulty {
-		width: 100px;
-		margin: 0px;
+		width        : 100px;
+		margin       : 0;
 		border-bottom: 0;
 	}
 
-	input.duration {
+	input.time-duration {
 		width: 80px;
 	}
 
 	::-webkit-input-placeholder {
 		color: transparent;
 	}
+
 	:-moz-placeholder {
 		color: transparent;
 	}
+
 	::-moz-placeholder {
 		color: transparent;
 	}
+
 	:-ms-input-placeholder {
 		color: transparent;
 	}
 
 	input[type=number] {
-		-moz-appearance: textfield;
+		-moz-appearance   : textfield;
 		-webkit-appearance: textfield;
-		appearance: textfield;
+		appearance        : textfield;
 	}
-
 }
