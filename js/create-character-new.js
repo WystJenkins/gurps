@@ -143,7 +143,7 @@
 	}
 
 	function insertCosts(costs) {
-
+		body.find("#costs-total-footer").text(costs);
 	}
 
 	function setAddRemoveButtons() {
@@ -154,6 +154,8 @@
 	function addField() {
 		let trait = $(this).data().trait;
 		addTraitField(trait);
+
+		setCostAutoCount();
 	}
 
 	function removeField() {
@@ -881,9 +883,9 @@ function getAndInsertAll() {
 	$("#positive-total-head").innerHTML = localStorage.getItem("positive-total-head");
 	$("#negative-total-head").innerHTML = localStorage.getItem("negative-total-head");
 
-	$("#points-total-bottom").innerHTML = localStorage.getItem("points-total-head");
-	$("#positive-total-bottom").innerHTML = localStorage.getItem("positive-total-head");
-	$("#negative-total-bottom").innerHTML = localStorage.getItem("negative-total-head");
+	$("#costs-total-footer").innerHTML = localStorage.getItem("points-total-head");
+	$("#costs-positive-footer").innerHTML = localStorage.getItem("positive-total-head");
+	$("#costs-negative-footer").innerHTML = localStorage.getItem("negative-total-head");
 
 	$("#name").value = localStorage.getItem("name");
 
@@ -1139,9 +1141,9 @@ function update() {
 	$("#points-total-head").innerHTML = totalPoints;
 	$("#positive-total-head").innerHTML = positivePoints;
 	$("#negative-total-head").innerHTML = negativePoints;
-	$("#points-total-bottom").innerHTML = totalPoints;
-	$("#positive-total-bottom").innerHTML = positivePoints;
-	$("#negative-total-bottom").innerHTML = negativePoints;
+	$("#costs-total-footer").innerHTML = totalPoints;
+	$("#costs-positive-footer").innerHTML = positivePoints;
+	$("#costs-negative-footer").innerHTML = negativePoints;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

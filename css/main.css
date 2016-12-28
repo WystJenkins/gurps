@@ -149,7 +149,7 @@ div#tooltip1,
 div#tooltip2 {
   margin: 0; }
 
-.points-bottom,
+.costs-footer,
 .points-head {
   margin: 0px 20px 0px 20px;
   font-weight: bold; }
@@ -257,7 +257,7 @@ div.comment-button {
   div#tooltip2 {
     margin: 0; }
 
-  .points-bottom,
+  .costs-footer,
   .points-head {
     margin: 0px 20px 0px 20px;
     font-weight: bold; }

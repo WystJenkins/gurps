@@ -679,9 +679,9 @@ function getAndInsertAll() {
 	document.getElementById("positive-total-head").innerHTML = localStorage.getItem("positive-total-head");
 	document.getElementById("negative-total-head").innerHTML = localStorage.getItem("negative-total-head");
 
-	document.getElementById("points-total-bottom").innerHTML = localStorage.getItem("points-total-head");
-	document.getElementById("positive-total-bottom").innerHTML = localStorage.getItem("positive-total-head");
-	document.getElementById("negative-total-bottom").innerHTML = localStorage.getItem("negative-total-head");
+	document.getElementById("costs-total-footer").innerHTML = localStorage.getItem("points-total-head");
+	document.getElementById("costs-positive-footer").innerHTML = localStorage.getItem("positive-total-head");
+	document.getElementById("costs-negative-footer").innerHTML = localStorage.getItem("negative-total-head");
 
 	document.getElementById("name").value = localStorage.getItem("name");
 
@@ -937,9 +937,9 @@ function update() {
 	document.getElementById("points-total-head").innerHTML = totalPoints;
 	document.getElementById("positive-total-head").innerHTML = positivePoints;
 	document.getElementById("negative-total-head").innerHTML = negativePoints;
-	document.getElementById("points-total-bottom").innerHTML = totalPoints;
-	document.getElementById("positive-total-bottom").innerHTML = positivePoints;
-	document.getElementById("negative-total-bottom").innerHTML = negativePoints;
+	document.getElementById("costs-total-footer").innerHTML = totalPoints;
+	document.getElementById("costs-positive-footer").innerHTML = positivePoints;
+	document.getElementById("costs-negative-footer").innerHTML = negativePoints;
 }
 
 /******************************************************************************************************/
