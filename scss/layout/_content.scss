@@ -117,6 +117,16 @@ div.comment-button {
 	border-radius: 5px;
 }
 
+#cost-total-footer{
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	margin: 0;
+	padding: 0;
+	height: 50px;
+	width: 100%;
+}
+
 /*------------------------------------------------*/
 /* MOBILE VERSION (PORTRAIT)                      */
 /*------------------------------------------------*/
@@ -245,9 +255,8 @@ div.comment-button {
 		display: none;
 	}
 
-	#cost-total-bottom {
-		width: 100%;
-		margin: 0px;
+	#cost-total-footer {
+		position: absolute;
 	}
 }
 
@@ -284,5 +293,9 @@ div.comment-button {
 
 	.saveload-button-wrapper{
 		display: none;
+	}
+
+	#cost-total-footer{
+		position: relative;
 	}
 }

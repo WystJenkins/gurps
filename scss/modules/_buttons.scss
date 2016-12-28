@@ -179,13 +179,11 @@ input[type="file"]{
 @media print {
     button,
     .tooltip,
-    .points-bottom,
     .plusminus,
     #spellbutton,
-    #cost-total-bottom,
     label.custom-value,
     div#unicorn-button,
-	.saveload-buttons{
+		.saveload-buttons{
         display:none;
     }
 }

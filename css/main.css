@@ -194,6 +194,15 @@ div.comment-button {
   margin: 15px 0px;
   border-radius: 5px; }
 
+#cost-total-footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  margin: 0;
+  padding: 0;
+  height: 50px;
+  width: 100%; }
+
 /*------------------------------------------------*/
 /* MOBILE VERSION (PORTRAIT)                      */
 /*------------------------------------------------*/
@@ -304,9 +313,8 @@ div.comment-button {
   .hidden-stuff {
     display: none; }
 
-  #cost-total-bottom {
-    width: 100%;
-    margin: 0px; } }
+  #cost-total-footer {
+    position: absolute; } }
 /*------------------------------------------------*/
 /* PRINT VERSION                                  */
 /*------------------------------------------------*/
@@ -336,7 +344,10 @@ div.comment-button {
     margin: 0px 0px 20px 0px; }
 
   .saveload-button-wrapper {
-    display: none; } }
+    display: none; }
+
+  #cost-total-footer {
+    position: relative; } }
 /*sidebar blocks, primary and secondary color blocks*/
 button {
   padding: 17px 8px;
@@ -505,10 +516,8 @@ input[type="file"] {
 @media print {
   button,
   .tooltip,
-  .points-bottom,
   .plusminus,
   #spellbutton,
-  #cost-total-bottom,
   label.custom-value,
   div#unicorn-button,
   .saveload-buttons {
