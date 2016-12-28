@@ -96,7 +96,7 @@
 				</div>
 			</div>
 
-			<div id="attr-container"></div>
+			<div id="attr-rows-container" class="rows-container" data-trait="attr"></div>
 
 
 			<!-- SECONDARY CHARACTERISTICS -->
@@ -117,7 +117,7 @@
 				<div class="col-xs-3">
 					Formula
 				</div>
-				<div class="col-xs-1">
+				<div class="col-xs-2">
 					Value
 				</div>
 				<div class="col-xs-1">
@@ -127,8 +127,9 @@
 				</div>
 			</div>
 
-			<div id="attr2-container"></div>
-			<div id="damage-container"></div>
+			<div id="attr2-rows-container" class="rows-container" data-trait="attr2"></div>
+
+			<div id="damage-rows-container" class="rows-container" data-trait="damage"></div>
 
 
 			<!-- ADVANTAGES -->
@@ -142,7 +143,7 @@
 
 			<div id="adv-headline-container"></div>
 
-			<div id="adv-dynamic-container"></div>
+			<div id="adv-rows-container" class="rows-container" data-trait="adv"></div>
 
 
 			<!-- PERKS -->
@@ -156,7 +157,7 @@
 
 			<div id="perk-headline-container"></div>
 
-			<div id="perk-dynamic-container"></div>
+			<div id="perk-rows-container" class="rows-container" data-trait="perk"></div>
 
 
 			<!-- DISADVANTAGES-->
@@ -170,7 +171,7 @@
 
 			<div id="disadv-headline-container"></div>
 
-			<div id="disadv-dynamic-container"></div>
+			<div id="disadv-rows-container" class="rows-container" data-trait="disadv"></div>
 
 
 			<!-- QUIRKS -->
@@ -184,7 +185,7 @@
 
 			<div id="quirk-headline-container"></div>
 
-			<div id="quirk-dynamic-container"></div>
+			<div id="quirk-rows-container" class="rows-container" data-trait="quirk"></div>
 
 
 			<!-- SKILLS -->
@@ -218,7 +219,7 @@
 				</div>
 			</div>
 
-			<div id="skill-dynamic-container"></div>
+			<div id="skill-rows-container" class="rows-container" data-trait="skill"></div>
 
 
 			<!-- SPELLS -->
@@ -251,7 +252,7 @@
 				</div>
 			</div>
 
-			<div id="spell-dynamic-container"></div>
+			<div id="spell-rows-container" class="rows-container" data-trait="spell"></div>
 
 
 			<!-- WEAPONS AND EQUIPMENT -->
@@ -263,7 +264,7 @@
 
 			<div id="equipment-button-container"></div>
 
-			<div id="equipment-dynamic-container"></div>
+			<div id="equipment-rows-container" class="rows-container" data-trait="equipment"></div>
 
 
 			<!-- NOTES -->
@@ -327,7 +328,7 @@
 <!-- ATTR TEMPLATE-->
 
 <script id="attr-template" type="text/html">
-	<div class="row attr-row">
+	<div class="row attr-row" data-trait="attr">
 		<div class="col-xs-3">
 			<div class="name attr-name"></div>
 		</div>
@@ -344,14 +345,14 @@
 <!-- ATTR 2 TEMPLATE -->
 
 <script id="attr2-template" type="text/html">
-	<div class="row attr2-row">
+	<div class="row attr2-row" data-trait="attr2">
 		<div class="col-xs-3">
 			<div class="name attr2-name"></div>
 		</div>
 		<div class="col-xs-3">
 			<div class="formula attr2-formula"></div>
 		</div>
-		<div class="col-xs-1">
+		<div class="col-xs-2">
 			<input type="number" min="1" max="100" step="1" class="level attr2-level" value="10">
 		</div>
 		<div class="col-xs-1">
@@ -369,7 +370,7 @@
 <!-- DAMAGE ROW TEMPLATE -->
 
 <script id="damage-template" type="text/html">
-	<div class="row damage-row">
+	<div class="row damage-row" data-trait="damage">
 		<div class="col-xs-3">
 			<div class="name damage-name"></div>
 		</div>
@@ -400,7 +401,7 @@
 <!-- ADV ROW TEMPLATE -->
 
 <script id="adv-template" type="text/html">
-	<div class="row adv-row">
+	<div class="row adv-row" data-trait="adv">
 		<!-- TODO: add note field -->
 		<!--<div class="add-note-button">+</div>-->
 		<div class="col-xs-4">
@@ -421,7 +422,7 @@
 <!-- PERK ROW TEMPLATE -->
 
 <script id="perk-template" type="text/html">
-	<div class="row perk-row">
+	<div class="row perk-row" data-trait="perk">
 		<div class="col-xs-4">
 			<input type="text" class="name" placeholder="Name/Description">
 		</div>
@@ -435,7 +436,7 @@
 <!-- DISADVANTAGE ROW TEMPLATE -->
 
 <script id="disadv-template" type="text/html">
-	<div class="row disadv-row">
+	<div class="row disadv-row" data-trait="disadv">
 		<div class="col-xs-4">
 			<input type="text" class="name" placeholder="Name/Description">
 		</div>
@@ -449,7 +450,7 @@
 <!-- QUIRK ROW TEMPLATE -->
 
 <script id="quirk-template" type="text/html">
-	<div class="row quirk-row">
+	<div class="row quirk-row" data-trait="quirk">
 		<div class="col-xs-4">
 			<input type="text" class="name" placeholder="Name/Description">
 		</div>
@@ -463,7 +464,7 @@
 <!-- SKILL ROW TEMPLATE -->
 
 <script id="skill-template" type="text/html">
-	<div class="row skill-row">
+	<div class="row skill-row" data-trait="skill">
 		<div class="col-xs-4">
 			<input type="text" class="name skill-name" placeholder="Name/Description">
 		</div>
@@ -499,7 +500,7 @@
 <!-- SPELL ROW TEMPLATE -->
 
 <script id="spell-template" type="text/html">
-	<div class="row spell-row">
+	<div class="row spell-row" data-trait="spell">
 		<div class="col-xs-4">
 			<input type="text" class="name spell-name" placeholder="Name/Description">
 		</div>
@@ -550,4 +551,6 @@
 <script src="libraries/jquery-3.1.1.min.js"></script>
 <script src="libraries/bootstrap/bootstrap.js"></script>
 <script src="libraries/sweetalert-master/dist/sweetalert.min.js"></script>
+
+<script type="text/javascript" src="js/auto-fill-costs.js"></script>
 <script type="text/javascript" src="js/create-character-new.js"></script>

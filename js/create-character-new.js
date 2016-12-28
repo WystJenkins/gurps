@@ -7,7 +7,7 @@
 
 	function initPage() {
 		initButtons();
-		initInputFields();
+		initInputRows();
 		setListeners();
 	}
 
@@ -27,88 +27,102 @@
 		}
 	}
 
-	function initInputFields() {
-		addAttrFields();
-
-		addAttr2Fields();
-		addDamageFields();
+	function initInputRows() {
+		addAttrRows();
+		addAttr2Rows();
+		addDamageRows();
 
 		for (let i = 0; i < TRAITS.length; i++) {
 			let trait = TRAITS[i];
 
 			addTraitHeadline(trait);
-			addTraitField(trait);
+			addTraitRow(trait);
 		}
 	}
 
-	function addAttrFields() {
+	function addAttrRows() {
 		const ATTR_NAMES = ["Strength", "Dexterity", "IQ", "Health"];
+		const ATTR_ABBR = ["st", "dx", "iq", "ht"];
 
-		let attrBox = body.find("#attr-container");
+		let box = body.find("#attr-rows-container");
 
 		for (let i = 0; i < ATTR_NAMES.length; i++) {
 			let name = ATTR_NAMES[i];
-			let attrTemplate = $($("#attr-template").html());
+			let template = $($("#attr-template").html());
 
-			attrTemplate.attr("id", `attr-row${i}`);
-			attrTemplate.find(".name").text(name);
+			template.attr("id", `attr-type-${ATTR_ABBR[i]}`);
+			template.data("position", i);
+			template.find(".name").text(name);
 
-			attrBox.append(attrTemplate);
+			setRowListeners(template);
+
+			box.append(template);
 		}
+
+		setAttrListener();
 	}
 
-	function addAttr2Fields() {
+	function addAttr2Rows() {
 		const ATTR2_NAMES = ["Hit Points", "Will", "Perception", "Fatigue Points", "Basic Speed", "Basic Move", "Dodge", "Basic Lift"];
 		const ATTR2_FORMULAS = ["HP = ST", "Will = IQ", "Per = IQ", "FP = HT", "(HT+DX)/4", "Move = Speed", "Speed+3", "(ST*ST)/5"];
+		const ATTR2_ABBR = ["hp", "will", "per", "fp", "bs", "bm", "dg", "bl"];
 
-		let attr2Box = body.find("#attr2-container");
+		let box = body.find("#attr2-rows-container");
 
 		for (let i = 0; i < ATTR2_NAMES.length; i++) {
 			let name = ATTR2_NAMES[i];
 			let formula = ATTR2_FORMULAS[i];
-			let attr2Template = $($("#attr2-template").html());
+			let template = $($("#attr2-template").html());
 
-			attr2Template.attr("id", `attr-row${i}`);
-			attr2Template.find(".name").text(name);
-			attr2Template.find(".formula").text(formula);
+			template.attr("id", `attr-type-${ATTR2_ABBR[i]}`);
+			template.data({
+				position: i,
+				abbr: ATTR2_ABBR[i]
+			});
+			template.find(".name").text(name);
+			template.find(".formula").text(formula);
 
-			attr2Box.append(attr2Template);
+			setRowListeners(template);
+
+			box.append(template);
 		}
 	}
 
-	function addDamageFields() {
+	function addDamageRows() {
 		const DAMAGE_NAME = ["Thrust", "Swing"];
 		const DAMAGE_VALUE = ["1d-2", "1d"];
 
-		let damageBox = body.find("#damage-container");
+		let box = body.find("#damage-rows-container");
 
 		for (let i = 0; i < DAMAGE_NAME.length; i++) {
 			let name = DAMAGE_NAME[i];
 			let value = DAMAGE_VALUE[i];
-			let damageTemplate = $($("#damage-template").html());
+			let template = $($("#damage-template").html());
 
-			damageTemplate.find(".name").text(name);
-			damageTemplate.find(".level")
+			template.find(".name").text(name);
+			template.find(".level")
 				.val(value)
 				.attr("id", `damage-value${i}`);
 
-			damageBox.append(damageTemplate);
+			box.append(template);
 		}
 	}
 
 	function addTraitHeadline(trait) {
-		let headlineBox = body.find(`#${trait}-headline-container`);
-		let headlineTemplate = $($("#trait-headline-template").html());
+		let box = body.find(`#${trait}-headline-container`);
+		let template = $($("#trait-headline-template").html());
 
-		headlineBox.append(headlineTemplate);
+		box.append(template);
 	}
 
-	function addTraitField(trait) {
-		let box = body.find(`#${trait}-dynamic-container`);
+	function addTraitRow(trait) {
+		let box = body.find(`#${trait}-rows-container`);
 		let template = $($(`#${trait}-template`).html());
 		let counter = box.children().length;
 
 		template.attr("id", `${trait}-row${counter}`);
+
+		setRowListeners(template);
 
 		box.append(template);
 	}
@@ -118,14 +132,10 @@
 		setAddRemoveButtons();
 		setLocalStorageButtons();
 		setSaveLoadFileButtons();
-
-		setCostAutoCount();
 	}
 
 	function setCostAutoCount() {
-		body.find(".cost").change(() => {
-			insertCosts(autoCountCosts());
-		});
+		body.find(".cost").on("input", insertCosts);
 	}
 
 	function autoCountCosts() {
@@ -142,31 +152,58 @@
 		return costs;
 	}
 
-	function insertCosts(costs) {
+	function insertCosts() {
+		let costs = autoCountCosts();
 		body.find("#costs-total-footer").text(costs);
 	}
 
 	function setAddRemoveButtons() {
-		body.find(".plus").click(addField);
-		body.find(".minus").click(removeField);
+		body.find(".plus").click(addRow);
+		body.find(".minus").click(removeRow);
 	}
 
-	function addField() {
+	function addRow() {
 		let trait = $(this).data().trait;
-		addTraitField(trait);
-
-		setCostAutoCount();
+		addTraitRow(trait);
 	}
 
-	function removeField() {
+	function removeRow() {
 		let trait = $(this).data().trait;
-		let box = body.find(`#${trait}-dynamic-container`);
+		let box = body.find(`#${trait}-rows-container`);
 
 		if (box.children().length <= 1) {
 			return;
 		}
 
 		box.children().last().remove();
+	}
+
+	function setRowListeners(row) {
+		row.find(".level")
+			.on("input", AutoFiller.fillInCosts)
+			.on("input", AutoFiller.fillInSecondaryStats)
+			.on("input", insertCosts);
+
+		row.find(".cost")
+			.on("input", insertCosts);
+
+		row.find(".skill-type, .skill-difficulty, .spell-skill")
+			.on("change", AutoFiller.fillInCosts);
+	}
+
+	function setAttrListener() {
+		body.find(".attr-level")
+			.on("input", recalculateAll);
+	}
+
+	function recalculateAll() {
+		let rows = body.find(".skill-row, .spell-row");
+
+		for (let i = 0; i < rows.length; i++) {
+			AutoFiller.recalculateCosts($(rows[i]));
+		}
+
+		insertCosts();
 	}
 
 	function setLocalStorageButtons() {
