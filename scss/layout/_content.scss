@@ -3,9 +3,11 @@
 }
 
 div.attr-name,
-div.attr-formular,
+div.attr2-formula,
 div.attr2-name,
-div.attr-formular {
+div.attr2-formula,
+div.damage-name,
+div.damage-formula {
 	width: 100%;
 	float: left;
 	background-color: $text-field-color;
@@ -121,7 +123,7 @@ div.comment-button {
 
 @include media-screen-portrait(){
 	div.attr-name,
-	div.attr-formular,
+	div.attr2-formula,
 	div.attr2-name {
 		width: 90%;
 		float: left;
@@ -139,7 +141,7 @@ div.comment-button {
 		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
 	}
 
-	div.attr-formular {
+	div.attr2-formula {
 		display: none;
 	}
 
@@ -255,9 +257,9 @@ div.comment-button {
 
 @media print {
 	div.attr-name,
-	div.attr-formular,
+	div.attr2-formula,
 	.attr2-name,
-	.attr-formular,
+	.attr2-formula,
 	.attr2-unit {
 		width: 150px;
 		float: left;
@@ -278,5 +280,9 @@ div.comment-button {
 
 	.spells-second-line {
 		margin: 0px 0px 20px 0px;
+	}
+
+	.saveload-button-wrapper{
+		display: none;
 	}
 }
