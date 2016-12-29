@@ -110,6 +110,21 @@ input[type="file"] {
 .toggle-note-button:hover {
 	cursor: pointer;
 }
+
+.hide-category-button {
+	font-size: 9pt;
+	border: 1px solid #8c8c8c;
+	color: #8c8c8c;
+	padding: 0 2px;
+	border-radius: 4px;
+	margin-left: 5px;
+	width: 40px;
+	text-align: center;
+}
+
+.hide-category-button:hover {
+	cursor: pointer;
+}
 /*------------------------------------------------*/
 /* MOBILE VERSION (PORTRAIT)                      */
 /*------------------------------------------------*/
@@ -181,6 +196,7 @@ input[type="file"] {
 /*------------------------------------------------*/
 @media print {
 	#spellbutton,
+	.hide-category-button,
 	.plusminus,
 	.saveload-buttons,
 	.toggle-note-button,

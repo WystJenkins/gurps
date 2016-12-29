@@ -132,6 +132,7 @@
 		setAddRemoveButtons();
 		setLocalStorageButtons();
 		setSaveLoadFileButtons();
+		setHideCategoryButtons();
 	}
 
 	function setCostAutoCount() {
@@ -214,6 +215,21 @@
 		}
 
 		insertCosts();
+	}
+
+	function setHideCategoryButtons() {
+		body.find(".hide-category-button")
+			.on("click", toggleCategory);
+	}
+
+	function toggleCategory() {
+		let button = $(this);
+		let trait = button.data().trait;
+		let box = body.find(`.${trait}-container`);
+		let buttonText = box.hasClass("hidden") ? "hide" : "show";
+
+		box.toggleClass("hidden");
+		button.text(buttonText);
 	}
 
 	function setLocalStorageButtons() {

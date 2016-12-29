@@ -74,210 +74,231 @@
 			</div>
 
 			<!-- PRIMARY ATTRIBUTES -->
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Attributes
-						<a class="tooltip" title="Only the Attribute's level needs to be changed. The right Costs will be inserted automatically.">
-							<div class="tooltip-symbol" id="tooltip0" title="">ⓘ</div>
-						</a>
-					</h2>
+			<div class="attr-container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Attributes
+							<a class="tooltip" title="Only the Attribute's level needs to be changed. The right Costs will be inserted automatically.">
+								<div class="tooltip-symbol" id="tooltip0" title="">ⓘ</div>
+							</a>
+						</h2>
+					</div>
 				</div>
+
+				<div class="row headline">
+					<div class="col-xs-3">
+						Attribute
+					</div>
+					<div class="col-xs-1">
+						Level
+					</div>
+					<div class="col-xs-1">
+						Cost
+					</div>
+				</div>
+
+				<div id="attr-rows-container" class="rows-container" data-trait="attr"></div>
 			</div>
-
-			<div class="row headline">
-				<div class="col-xs-3">
-					Attribute
-				</div>
-				<div class="col-xs-1">
-					Level
-				</div>
-				<div class="col-xs-1">
-					Cost
-				</div>
-			</div>
-
-			<div id="attr-rows-container" class="rows-container" data-trait="attr"></div>
-
 
 			<!-- SECONDARY CHARACTERISTICS -->
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Secondary Characteristics
-						<a class="tooltip" title="If you want to change the value of a secondary attribute, please check the box on the right. Clicking the checkbox will disable the automatic count and inserting of this value.">
-							<div class="tooltip-symbol" id="tooltip1" title="">ⓘ</div>
-						</a>
-					</h2>
+			<div class="attr2-container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Secondary Characteristics</h2>
+					</div>
 				</div>
+
+				<div class="row headline">
+					<div class="col-xs-3">
+						Name
+					</div>
+					<div class="col-xs-3">
+						Formula
+					</div>
+					<div class="col-xs-2">
+						Value
+					</div>
+					<div class="col-xs-1">
+						Cost
+					</div>
+					<div class="col-xs-2">
+					</div>
+				</div>
+
+				<div id="attr2-rows-container" class="rows-container" data-trait="attr2"></div>
+
+				<div id="damage-rows-container" class="rows-container" data-trait="damage"></div>
 			</div>
-
-			<div class="row headline">
-				<div class="col-xs-3">
-					Name
-				</div>
-				<div class="col-xs-3">
-					Formula
-				</div>
-				<div class="col-xs-2">
-					Value
-				</div>
-				<div class="col-xs-1">
-					Cost
-				</div>
-				<div class="col-xs-2">
-				</div>
-			</div>
-
-			<div id="attr2-rows-container" class="rows-container" data-trait="attr2"></div>
-
-			<div id="damage-rows-container" class="rows-container" data-trait="damage"></div>
-
 
 			<!-- ADVANTAGES -->
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Advantages</h2>
+			<div class="adv-container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Advantages</h2>
+					</div>
 				</div>
+
+				<div id="adv-button-container"></div>
+
+				<div id="adv-headline-container"></div>
+
+				<div id="adv-rows-container" class="rows-container" data-trait="adv"></div>
+
 			</div>
-
-			<div id="adv-button-container"></div>
-
-			<div id="adv-headline-container"></div>
-
-			<div id="adv-rows-container" class="rows-container" data-trait="adv"></div>
+			<div class="hide-category-button" data-trait="adv">hide</div>
 
 
 			<!-- PERKS -->
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Perks</h2>
+			<div class="perk-container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Perks</h2>
+					</div>
 				</div>
+
+				<div id="perk-button-container"></div>
+
+				<div id="perk-headline-container"></div>
+
+				<div id="perk-rows-container" class="rows-container" data-trait="perk"></div>
+
 			</div>
-
-			<div id="perk-button-container"></div>
-
-			<div id="perk-headline-container"></div>
-
-			<div id="perk-rows-container" class="rows-container" data-trait="perk"></div>
+			<div class="hide-category-button" data-trait="perk">hide</div>
 
 
 			<!-- DISADVANTAGES-->
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Disadvantages</h2>
+			<div class="disadv-container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Disadvantages</h2>
+					</div>
 				</div>
+
+				<div id="disadv-button-container"></div>
+
+				<div id="disadv-headline-container"></div>
+
+				<div id="disadv-rows-container" class="rows-container" data-trait="disadv"></div>
+
 			</div>
-
-			<div id="disadv-button-container"></div>
-
-			<div id="disadv-headline-container"></div>
-
-			<div id="disadv-rows-container" class="rows-container" data-trait="disadv"></div>
+			<div class="hide-category-button" data-trait="disadv">hide</div>
 
 
 			<!-- QUIRKS -->
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Quirks</h2>
+			<div class="quirk-container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Quirks</h2>
+					</div>
 				</div>
+
+				<div id="quirk-button-container"></div>
+
+				<div id="quirk-headline-container"></div>
+
+				<div id="quirk-rows-container" class="rows-container" data-trait="quirk"></div>
+
 			</div>
-
-			<div id="quirk-button-container"></div>
-
-			<div id="quirk-headline-container"></div>
-
-			<div id="quirk-rows-container" class="rows-container" data-trait="quirk"></div>
+			<div class="hide-category-button" data-trait="quirk">hide</div>
 
 
 			<!-- SKILLS -->
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Skills
-						<a class="tooltip" title="Please add Type, Difficulty and Level first, then click COUNT to automatically insert the Costs.">
-							<div class="tooltip-symbol" id="tooltip2" title="">ⓘ</div>
-						</a>
-					</h2>
+			<div class="skill-container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Skills</h2>
+					</div>
 				</div>
+
+				<div id="skill-button-container"></div>
+
+				<div class="row headline">
+					<div class="col-xs-4">
+						Name
+					</div>
+					<div class="col-xs-2">
+						Type
+					</div>
+					<div class="col-xs-2">
+						Difficulty
+					</div>
+					<div class="col-xs-1">
+						Level
+					</div>
+					<div class="col-xs-1">
+						Cost
+					</div>
+				</div>
+
+				<div id="skill-rows-container" class="rows-container" data-trait="skill"></div>
 			</div>
-
-			<div id="skill-button-container"></div>
-
-			<div class="row headline">
-				<div class="col-xs-4">
-					Name
-				</div>
-				<div class="col-xs-2">
-					Type
-				</div>
-				<div class="col-xs-2">
-					Difficulty
-				</div>
-				<div class="col-xs-1">
-					Level
-				</div>
-				<div class="col-xs-1">
-					Cost
-				</div>
-			</div>
-
-			<div id="skill-rows-container" class="rows-container" data-trait="skill"></div>
+			<div class="hide-category-button" data-trait="skill">hide</div>
 
 
 			<!-- SPELLS -->
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Spells</h2>
+			<div class="spell-container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Spells</h2>
+					</div>
 				</div>
+
+				<div id="spell-button-container"></div>
+
+				<div class="row headline">
+					<div class="col-xs-4">
+						Name
+					</div>
+					<div class="col-xs-1">
+						Skill
+					</div>
+					<div class="col-xs-2">
+						Class
+					</div>
+					<div class="col-xs-3">
+						Time &amp; Duration
+					</div>
+					<div class="col-xs-1">
+						Level
+					</div>
+					<div class="col-xs-1">
+						Cost
+					</div>
+				</div>
+
+				<div id="spell-rows-container" class="rows-container" data-trait="spell"></div>
 			</div>
-
-			<div id="spell-button-container"></div>
-
-			<div class="row headline">
-				<div class="col-xs-4">
-					Name
-				</div>
-				<div class="col-xs-1">
-					Skill
-				</div>
-				<div class="col-xs-2">
-					Class
-				</div>
-				<div class="col-xs-3">
-					Time &amp; Duration
-				</div>
-				<div class="col-xs-1">
-					Level
-				</div>
-				<div class="col-xs-1">
-					Cost
-				</div>
-			</div>
-
-			<div id="spell-rows-container" class="rows-container" data-trait="spell"></div>
+			<div class="hide-category-button" data-trait="spell">hide</div>
 
 
 			<!-- WEAPONS AND EQUIPMENT -->
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Weapons and Equipment</h2>
+			<div class="equipment-container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Weapons and Equipment</h2>
+					</div>
 				</div>
+
+				<div id="equipment-button-container"></div>
+
+				<div id="equipment-rows-container" class="rows-container" data-trait="equipment"></div>
 			</div>
-
-			<div id="equipment-button-container"></div>
-
-			<div id="equipment-rows-container" class="rows-container" data-trait="equipment"></div>
-
+			<div class="hide-category-button" data-trait="equipment">hide</div>
 
 			<!-- NOTES -->
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Notes</h2>
+			<div class="notes-container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>Notes</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<textarea rows="4" cols="100" class="notes" id="notes"></textarea>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<textarea rows="4" cols="100" class="notes" id="notes"></textarea>
-				</div>
-			</div>
+			<div class="hide-category-button" data-trait="notes">hide</div>
 
 			<div class="row" style="margin-bottom: 65px">
 				<div class="col-xs-12"></div>
