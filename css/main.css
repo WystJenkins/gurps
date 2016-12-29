@@ -14,6 +14,9 @@ main, #main {
 h2 {
   margin: 35px 0px 0px 0px; }
 
+.hidden {
+  display: none; }
+
 /*div {
 	background-color: lightblue;
 	border: 1px solid white;
@@ -358,8 +361,8 @@ button {
 .plusminus {
   background: #492470;
   color: #F1F1F1;
-  margin: 0px 5px 0 0;
-  padding: 0px;
+  margin: 0 5px 0 0;
+  padding: 0;
   width: 35%;
   height: 25px;
   border-radius: 3px;
@@ -379,9 +382,9 @@ button {
   font-size: 0.6em;
   font-weight: bold; }
 
-.setgetbuttons,
+.countbuttons,
 .printbuttons,
-.countbuttons {
+.setgetbuttons {
   background-color: #D3D3D3;
   margin: 0;
   padding: 0;
@@ -390,10 +393,10 @@ button {
   font-size: 0.9em;
   font-weight: bold; }
 
+#spellbutton:hover,
 .countbuttons:hover,
-.setgetbuttons:hover,
 .printbuttons:hover,
-#spellbutton:hover {
+.setgetbuttons:hover {
   background: #DBDBDB; }
 
 #unicorn-button {
@@ -424,7 +427,7 @@ label.custom-value {
   width: auto;
   background-color: #492470;
   color: whitesmoke;
-  padding: 6px 6px 6px 0px;
+  padding: 6px 6px 6px 0;
   margin: 0 0 0 6px;
   border-radius: 3px;
   font-size: 0.9em;
@@ -449,9 +452,14 @@ label.green {
 input[type="file"] {
   display: inline; }
 
-.add-note-button {
+.toggle-note-button {
   position: absolute;
-  line-height: 30px; }
+  line-height: 30px;
+  color: #a9a9a9;
+  z-index: 999; }
+
+.toggle-note-button:hover {
+  cursor: pointer; }
 
 /*------------------------------------------------*/
 /* MOBILE VERSION (PORTRAIT)                      */
@@ -460,7 +468,7 @@ input[type="file"] {
   button.plusminus {
     background-color: lightgrey;
     border: none;
-    margin: 10px 0 0 0;
+    margin: 10px 0 0;
     padding: 0;
     width: 90px;
     height: 80px;
@@ -471,7 +479,7 @@ input[type="file"] {
   button#spellbutton {
     background-color: lightgrey;
     border: none;
-    margin: 40px 0px;
+    margin: 40px 0;
     padding: 0;
     width: 100%;
     height: 136px;
@@ -479,9 +487,9 @@ input[type="file"] {
     font-weight: bold;
     font-size: 1em; }
 
-  button.setgetbuttons,
+  button.countbuttons,
   button.printbuttons,
-  button.countbuttons {
+  button.setgetbuttons {
     background-color: lightgrey;
     border: none;
     margin: 23px;
@@ -495,16 +503,17 @@ input[type="file"] {
   div#unicorn-button {
     display: none; }
 
-  #updateButton, #updateButton2 {
+  #updateButton,
+  #updateButton2 {
     width: 100%;
-    margin: 10px 0px 0px 0px;
+    margin: 10px 0 0;
     font-size: 1.5em; }
 
   label.custom-value {
     background-color: #492470;
     color: whitesmoke;
-    padding: 0px 6px;
-    margin: 0px;
+    padding: 0 6px;
+    margin: 0;
     font-size: 0.5em; }
 
   label.green {
@@ -514,13 +523,14 @@ input[type="file"] {
 /* PRINT VERSION                                  */
 /*------------------------------------------------*/
 @media print {
-  button,
-  .tooltip,
-  .plusminus,
   #spellbutton,
-  label.custom-value,
+  .plusminus,
+  .saveload-buttons,
+  .toggle-note-button,
+  .tooltip,
+  button,
   div#unicorn-button,
-  .saveload-buttons {
+  label.custom-value {
     display: none; } }
 /*alerts, progress bars, etc*/
 form {
@@ -616,6 +626,13 @@ input[type="submit"]:hover {
 
 input:disabled {
   background-color: #DFE7E9; }
+
+input.note {
+  width: 100%;
+  height: 30px;
+  padding: 7px;
+  color: #777777;
+  border: 1px solid #e8eeef; }
 
 /*------------------------------------------------*/
 /* MOBILE VERSION (PORTRAIT)                      */
@@ -830,7 +847,11 @@ input:disabled {
   input[type=number] {
     -moz-appearance: textfield;
     -webkit-appearance: textfield;
-    appearance: textfield; } }
+    appearance: textfield; }
+
+  input.note {
+    color: #777777 !important;
+    border: none; } }
 ul {
   list-style-type: none; }
 

@@ -189,6 +189,16 @@
 
 		row.find(".skill-type, .skill-difficulty, .spell-skill")
 			.on("change", AutoFiller.fillInCosts);
+
+		row.find(".toggle-note-button")
+			.on("click", toggleNote);
+	}
+
+	function toggleNote() {
+		let row = $(this.parentElement);
+		let note = row.find(".note");
+
+		note.toggleClass("hidden");
 	}
 
 	function setAttrListener() {

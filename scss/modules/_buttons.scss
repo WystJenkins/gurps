@@ -6,10 +6,10 @@ button {
 }
 
 .plusminus {
-    background: $plusminus-button-color;
+	background: $plusminus-button-color;
 	color: #F1F1F1;
-	margin: 0px 5px 0 0;
-	padding: 0px;
+	margin: 0 5px 0 0;
+	padding: 0;
 	width: 35%;
 	height: 25px;
 	border-radius: 3px;
@@ -23,47 +23,47 @@ button {
 }
 
 #spellbutton {
-  background-color: $button-color;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 36px;
-  font-size: 0.6em;
-  font-weight: bold;
+	background-color: $button-color;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 36px;
+	font-size: 0.6em;
+	font-weight: bold;
 }
 
-.setgetbuttons,
+.countbuttons,
 .printbuttons,
-.countbuttons {
-    background-color: $button-color;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 45px;
-    font-size: 0.9em;
-    font-weight: bold;
+.setgetbuttons {
+	background-color: $button-color;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 45px;
+	font-size: 0.9em;
+	font-weight: bold;
 }
 
+#spellbutton:hover,
 .countbuttons:hover,
-.setgetbuttons:hover,
 .printbuttons:hover,
-#spellbutton:hover {
+.setgetbuttons:hover {
 	background: $button-hover-color;
 }
 
 #unicorn-button {
 	position: absolute;
-    border: 1px solid rgb(48, 24, 73);
+	border: 1px solid rgb(48, 24, 73);
 	color: rgb(48, 24, 73);
-    width: 131px;
-    text-align: center;
-    border-radius: 3px;
-    margin: 0;
-    padding: 2px 6px;
-    font-weight: bold;
-    right: 1%;
-    top: 1%;
-    cursor: pointer;
+	width: 131px;
+	text-align: center;
+	border-radius: 3px;
+	margin: 0;
+	padding: 2px 6px;
+	font-weight: bold;
+	right: 1%;
+	top: 1%;
+	cursor: pointer;
 	@include no-select();
 }
 
@@ -76,11 +76,11 @@ label.custom-value {
 	width: auto;
 	background-color: rgb(73, 36, 112);
 	color: rgb(245, 245, 245);
-	padding: 6px 6px 6px 0px;
+	padding: 6px 6px 6px 0;
 	margin: 0 0 0 6px;
 	border-radius: 3px;
 	font-size: 0.9em;
-    cursor: pointer;
+	cursor: pointer;
 	@include no-select();
 }
 
@@ -89,101 +89,105 @@ label.green {
 	color: black;
 }
 
-.saveload-buttons{
+.saveload-buttons {
 	height: 38px;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+	padding: 0;
+	margin: 0;
+	width: 100%;
 }
 
-input[type="file"]{
+input[type="file"] {
 	display: inline;
 }
 
-.add-note-button{
+.toggle-note-button {
 	position: absolute;
 	line-height: 30px;
+	color: #a9a9a9;
+	z-index: 999;
 }
 
+.toggle-note-button:hover {
+	cursor: pointer;
+}
 /*------------------------------------------------*/
 /* MOBILE VERSION (PORTRAIT)                      */
 /*------------------------------------------------*/
+@include media-screen-portrait() {
+	button.plusminus {
+		background-color: lightgrey;
+		border: none;
+		margin: 10px 0 0;
+		padding: 0;
+		width: 90px;
+		height: 80px;
+		border-radius: 5px;
+		font-weight: bold;
+		font-size: 1.8em;
+	}
 
-@include media-screen-portrait(){
-    button.plusminus {
-        background-color: lightgrey;
-        border: none;
-        margin: 10px 0 0 0;
-        padding: 0;
-        width: 90px;
-        height: 80px;
-        border-radius: 5px;
-        font-weight: bold;
-        font-size: 1.8em;
-    }
+	button#spellbutton {
+		background-color: lightgrey;
+		border: none;
+		margin: 40px 0;
+		padding: 0;
+		width: 100%;
+		height: 136px;
+		border-radius: 5px;
+		font-weight: bold;
+		font-size: 1em;
+	}
 
-    button#spellbutton {
-      background-color: lightgrey;
-      border: none;
-      margin: 40px 0px;
-      padding: 0;
-      width: 100%;
-      height: 136px;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 1em;
-    }
+	button.countbuttons,
+	button.printbuttons,
+	button.setgetbuttons {
+		background-color: lightgrey;
+		border: none;
+		margin: 23px;
+		padding: 0;
+		width: 370px;
+		height: 136px;
+		border-radius: 5px;
+		font-weight: bold;
+		font-size: 1em;
+	}
 
-    button.setgetbuttons,
-    button.printbuttons,
-    button.countbuttons {
-        background-color: lightgrey;
-        border: none;
-        margin: 23px;
-        padding: 0;
-        width: 370px;
-        height: 136px;
-        border-radius: 5px;
-        font-weight: bold;
-        font-size: 1em;
-    }
+	div#unicorn-button {
+		display: none;
+	}
 
-    div#unicorn-button{
-        display: none;
-    }
+	#updateButton,
+	#updateButton2 {
+		width: 100%;
+		margin: 10px 0 0;
+		font-size: 1.5em;
+	}
 
-    #updateButton, #updateButton2 {
-        width:100%;
-        margin: 10px 0px 0px 0px;
-        font-size: 1.5em;
-    }
+	label.custom-value {
+		background-color: rgb(73, 36, 112);
+		color: rgb(245, 245, 245);
+		padding: 0 6px;
+		margin: 0;
+		font-size: 0.5em;
+	}
 
-    label.custom-value {
-        background-color: rgb(73, 36, 112);
-        color: rgb(245, 245, 245);
-        padding: 0px 6px;
-        margin: 0px;
-        font-size: 0.5em;
-    }
-
-    label.green {
-        background-color: lightgreen;
-        color: black;
-    }
+	label.green {
+		background-color: lightgreen;
+		color: black;
+	}
 }
-
 /*------------------------------------------------*/
 /* PRINT VERSION                                  */
 /*------------------------------------------------*/
-
 @media print {
-    button,
-    .tooltip,
-    .plusminus,
-    #spellbutton,
-    label.custom-value,
-    div#unicorn-button,
-		.saveload-buttons{
-        display:none;
-    }
+	#spellbutton,
+	.plusminus,
+	.saveload-buttons,
+	.toggle-note-button,
+	.tooltip,
+	button,
+	div#unicorn-button,
+	label.custom-value {
+		display: none;
+	}
 }
