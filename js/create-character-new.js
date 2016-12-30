@@ -133,6 +133,7 @@
 		setLocalStorageButtons();
 		setSaveLoadFileButtons();
 		setHideCategoryButtons();
+		setSortCategoryButtons();
 	}
 
 	function setCostAutoCount() {
@@ -223,13 +224,28 @@
 	}
 
 	function toggleCategory() {
-		let button = $(this);
-		let trait = button.data().trait;
+		let trait = $(this).data().trait;
 		let box = body.find(`.${trait}-container`);
-		let buttonText = box.hasClass("hidden") ? "hide" : "show";
+		let buttonText = box.hasClass("hidden") ? "hide" : `show ${trait}`;
 
 		box.toggleClass("hidden");
-		button.text(buttonText);
+		$(this).text(buttonText);
+	}
+
+	function setSortCategoryButtons() {
+		body.find(".sort-category-button")
+			.on("click", sortCategory);
+	}
+
+	function sortCategory() {
+		let trait = $(this).data().trait;
+		let container = `#${trait}-rows-container`;
+
+		$(`${container} .row`).sort(function(a, b) {
+			let nameA = $(a).find(".name").val() || "§";
+			let nameB = $(b).find(".name").val() || "§";
+			return nameA > nameB;
+		}).appendTo(container);
 	}
 
 	function setLocalStorageButtons() {

@@ -111,18 +111,20 @@ input[type="file"] {
 	cursor: pointer;
 }
 
-.hide-category-button {
+.hide-category-button,
+.sort-category-button {
 	font-size: 9pt;
 	border: 1px solid #8c8c8c;
 	color: #8c8c8c;
-	padding: 0 2px;
+	padding: 0 5px;
 	border-radius: 4px;
-	margin-left: 5px;
-	width: 40px;
+	margin-left: 15px;
 	text-align: center;
+	width: initial;
 }
 
-.hide-category-button:hover {
+.hide-category-button:hover,
+.sort-category-button:hover {
 	cursor: pointer;
 }
 /*------------------------------------------------*/
@@ -199,6 +201,7 @@ input[type="file"] {
 	.hide-category-button,
 	.plusminus,
 	.saveload-buttons,
+	.sort-category-button,
 	.toggle-note-button,
 	.tooltip,
 	button,
