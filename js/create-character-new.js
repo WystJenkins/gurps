@@ -127,17 +127,13 @@
 		box.append(template);
 	}
 
-
 	function setListeners() {
 		setAddRemoveButtons();
 		setLocalStorageButtons();
 		setSaveLoadFileButtons();
 		setHideCategoryButtons();
 		setSortCategoryButtons();
-	}
-
-	function setCostAutoCount() {
-		body.find(".cost").on("input", insertCosts);
+		setCostTotalCount();
 	}
 
 	function autoCountCosts() {
@@ -156,7 +152,19 @@
 
 	function insertCosts() {
 		let costs = autoCountCosts();
+		checkCostLimit(costs);
 		body.find("#costs-total-footer").text(costs);
+	}
+
+	function checkCostLimit(costs) {
+		let limit = parseInt(body.find(".total-gained-points").val());
+		let warning = body.find(".costs-warning");
+
+		if (costs > limit) {
+			warning.removeClass("hidden");
+		} else {
+			warning.addClass("hidden");
+		}
 	}
 
 	function setAddRemoveButtons() {
@@ -199,8 +207,10 @@
 	function toggleNote() {
 		let row = $(this.parentElement);
 		let note = row.find(".note");
+		let buttonText = note.hasClass("hidden") ? "‒" : "+";
 
 		note.toggleClass("hidden");
+		$(this).text(buttonText);
 	}
 
 	function setAttrListener() {
@@ -246,6 +256,11 @@
 			let nameB = $(b).find(".name").val() || "§";
 			return nameA > nameB;
 		}).appendTo(container);
+	}
+
+	function setCostTotalCount() {
+		body.find(".total-gained-points")
+			.on("input", insertCosts);
 	}
 
 	function setLocalStorageButtons() {

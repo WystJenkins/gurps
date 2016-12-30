@@ -1,13 +1,13 @@
 .headline {
-	margin: 15px -15px -14px -15px;
+	margin: 15px -15px -14px;
 }
 
 div.attr-name,
 div.attr2-formula,
-div.attr2-name,
 div.attr2-formula,
-div.damage-name,
-div.damage-formula {
+div.attr2-name,
+div.damage-formula,
+div.damage-name {
 	width: 100%;
 	float: left;
 	background-color: $text-field-color;
@@ -27,7 +27,7 @@ div.damage-formula {
 }
 
 .spells-second-line {
-	margin: -5px 0 20px 0px;
+	margin: -5px 0 20px;
 }
 
 .tooltip {
@@ -53,9 +53,9 @@ div.damage-formula {
 }
 
 .tooltip-symbol {
-    display: inline;
-    position: relative;
-    margin: 0 0 0px 72px;
+	display: inline;
+	position: relative;
+	margin: 0 0 0 72px;
 }
 
 div#tooltip1,
@@ -65,7 +65,7 @@ div#tooltip2 {
 
 .costs-footer,
 .points-head {
-	margin: 0px 20px 0px 20px;
+	margin: 0 20px;
 	font-weight: bold;
 }
 
@@ -79,11 +79,11 @@ div.cost-total {
 }
 
 div.buttonwrap-top {
-    margin: 0 0 20px 0;
+	margin: 0 0 20px;
 }
 
 div.buttonwrap {
-	margin: 0px;
+	margin: 0;
 }
 
 .hidden-boxes {
@@ -95,43 +95,51 @@ div.buttonwrap {
 }
 
 .unicorn {
-	position:absolute;
-	overflow:hidden;
-	z-index:999;
+	position: absolute;
+	overflow: hidden;
+	z-index: 999;
 }
 
 div.comment-button {
 	border: 1px solid black;
-    border-radius: 8px;
-    width: 15px;
-    height: 15px;
-    text-align: center;
-    line-height: 15px;
+	border-radius: 8px;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
 	float: left;
 }
 
-.saveload-button-wrapper{
+.saveload-button-wrapper {
 	border: 1px solid #C3C3C3;
-	padding: 0px 35px;
-	margin: 15px 0px;
+	padding: 0 35px;
+	margin: 15px 0;
 	border-radius: 5px;
 }
 
-#cost-total-footer{
+#cost-total-footer {
 	position: fixed;
-	left: 0px;
-	bottom: 0px;
+	left: 0;
+	bottom: 0;
 	margin: 0;
 	padding: 0;
 	height: 50px;
 	width: 100%;
 }
 
+.costs-warning {
+	position: fixed;
+	right: 20px;
+	bottom: -3px;
+	z-index: 999;
+	font-size: 42px;
+	font-weight: 600;
+	color: #ff0000;
+}
 /*------------------------------------------------*/
 /* MOBILE VERSION (PORTRAIT)                      */
 /*------------------------------------------------*/
-
-@include media-screen-portrait(){
+@include media-screen-portrait() {
 	div.attr-name,
 	div.attr2-formula,
 	div.attr2-name {
@@ -141,7 +149,7 @@ div.comment-button {
 		color: rgba(0, 0, 0, 1);
 		border: none;
 		border-radius: 4px;
-		margin: 0px 10px 10px 0px;
+		margin: 0 10px 10px 0;
 		outline: 0;
 		padding: 7px;
 		box-sizing: border-box;
@@ -156,7 +164,7 @@ div.comment-button {
 	}
 
 	.spells-second-line {
-		margin: -5px 0 20px 0px;
+		margin: -5px 0 20px;
 	}
 
 	.tooltip {
@@ -191,25 +199,25 @@ div.comment-button {
 
 	.costs-footer,
 	.points-head {
-		margin: 0px 20px 0px 20px;
+		margin: 0 20px;
 		font-weight: bold;
 	}
 
 	div.cost-total {
 		border: 1px solid lightgrey;
-		padding: 10px 0 10px 0;
+		padding: 10px 0;
 		margin: 0;
 		width: 100%;
 		border-radius: 5px;
 		background-color: #E8EEEF;
 		display: inline-flex;
-		font-size:1.5em;
+		font-size: 1.5em;
 	}
 
 	div.buttonwrap-top {
 		margin: 10px 0;
 		width: 100%;
-		text-align:center;
+		text-align: center;
 		background-color: rgba(232, 238, 239, 0.43);
 	}
 
@@ -218,13 +226,13 @@ div.comment-button {
 	}
 
 	#buttonwrap-adv,
-	#buttonwrap-perk,
 	#buttonwrap-disadv,
+	#buttonwrap-equip,
+	#buttonwrap-perk,
 	#buttonwrap-quirk,
 	#buttonwrap-skill,
-	#buttonwrap-spell,
-	#buttonwrap-equip {
-		margin: 0px;
+	#buttonwrap-spell {
+		margin: 0;
 	}
 
 	.spellwrap {
@@ -232,14 +240,14 @@ div.comment-button {
 		font-size: 1.8em;
 	}
 
-	.spellwrap h2,
-	.spellwrap button,
+	.spellwrap .cost,
+	.spellwrap .duration,
+	.spellwrap .level,
 	.spellwrap .name,
 	.spellwrap .spell-type,
-	.spellwrap .duration,
 	.spellwrap .time,
-	.spellwrap .level,
-	.spellwrap .cost {
+	.spellwrap button,
+	.spellwrap h2 {
 		font-size: 1em;
 	}
 
@@ -259,25 +267,23 @@ div.comment-button {
 		position: absolute;
 	}
 }
-
 /*------------------------------------------------*/
 /* PRINT VERSION                                  */
 /*------------------------------------------------*/
-
 @media print {
-	div.attr-name,
-	div.attr2-formula,
-	.attr2-name,
 	.attr2-formula,
-	.attr2-unit {
+	.attr2-name,
+	.attr2-unit,
+	div.attr-name,
+	div.attr2-formula {
 		width: 150px;
 		float: left;
 		color: black;
-		margin: 0px 5px 0px 0px;
+		margin: 0 5px 0 0;
 		background-color: white;
-		padding: 0px;
+		padding: 0;
 		border: none;
-		border-radius: 0px;
+		border-radius: 0;
 		outline: 0;
 		box-sizing: border-box;
 		-webkit-box-sizing: border-box;
@@ -288,14 +294,14 @@ div.comment-button {
 	}
 
 	.spells-second-line {
-		margin: 0px 0px 20px 0px;
+		margin: 0 0 20px;
 	}
 
-	.saveload-button-wrapper{
+	.saveload-button-wrapper {
 		display: none;
 	}
 
-	#cost-total-footer{
+	#cost-total-footer {
 		position: relative;
 	}
 }
