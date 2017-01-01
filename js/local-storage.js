@@ -198,6 +198,11 @@
 
 			for (let prop in data) {
 				row.find(`.${prop}`).val(data[prop]);
+
+				if (prop === "note" && data[prop].length) {
+					row.find(".note").removeClass("hidden");
+					row.find(".toggle-note-button").text("‒");
+				}
 			}
 		}
 	}
