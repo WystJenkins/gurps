@@ -88,11 +88,17 @@
 		let trait = $(this).data().trait;
 		let container = `#${trait}-rows-container`;
 
-		$(`${container} .row`).sort(function(a, b) {
-			let nameA = $(a).find(".name").val() || "§";
-			let nameB = $(b).find(".name").val() || "§";
-			return nameA > nameB;
-		}).appendTo(container);
+		$(`${container} .row`)
+			.sort((a, b) => {
+				let nameA = $(a).find(".name").val().toLowerCase();
+				let nameB = $(b).find(".name").val().toLowerCase();
+
+				if (!nameA) return 1;
+				else if (!nameB) return -1;
+
+				return nameA.localeCompare(nameB);
+			})
+			.appendTo(container);
 	}
 
 	function setCostTotalCount() {

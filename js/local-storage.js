@@ -141,6 +141,7 @@
 		}
 
 		insertData(toValidJSON(storageData));
+
 		CalculateCosts.insertCosts();
 
 		swal("Fetched!", "Your data has been fetched.", "success");
