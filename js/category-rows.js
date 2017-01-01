@@ -20,7 +20,7 @@
 			box.append(template);
 		}
 
-		setAttrListener();
+		setRecalculateCostsListener();
 	}
 
 	function addAttr2Rows() {
@@ -104,8 +104,8 @@
 			.on("click", toggleNote);
 	}
 
-	function setAttrListener() {
-		$(".attr-level")
+	function setRecalculateCostsListener() {
+		$(".attr-level, #magical-aptitude-lvl")
 			.on("input", recalculateAll);
 	}
 

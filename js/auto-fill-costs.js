@@ -61,12 +61,13 @@
 		let level = box.find(".level").val();
 		let skillType = box.find(".skill").val();
 		let iq = $("#attr-type-iq").find(".level").val() || 0;
+		let magicalApt = $("#magical-aptitude-lvl").val() || 0;
 
 		if (!skillType || !level) {
 			return 0;
 		}
 
-		return calculateSkillCost(skillType, iq, level);
+		return calculateSkillCost(skillType, parseInt(iq) + parseInt(magicalApt), level);
 	}
 
 	function calculateSkillCost(type, level, expectedLevel) {

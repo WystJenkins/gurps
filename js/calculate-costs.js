@@ -2,17 +2,20 @@
 	"use strict";
 
 	function insertCosts() {
-		let costs = autoCountCosts();
+		let costs = autoCountCosts($(".cost"));
+		let negativeCosts = autoCountCosts($("#disadv-rows-container, #quirk-rows-container").find(".cost"));
+
 		checkCostLimit(costs);
+
 		$("#costs-total-footer").text(costs);
+		$("#costs-negative-footer").text(negativeCosts);
 	}
 
-	function autoCountCosts() {
-		let costFields = $(".cost");
+	function autoCountCosts(costFields) {
 		let costs = 0;
 
 		for (let i = 0; i < costFields.length; i++) {
-			let value = costFields[i].value;
+			let value = $(costFields[i]).val();
 			let cost = parseInt(value) || 0;
 
 			costs += cost;
