@@ -105,9 +105,9 @@
   }
 
   function setLocalStorageButtons() {
-    $('#save-data-button').click(LocalStorage.saveData);
-    $('#load-data-button').click(LocalStorage.loadData);
-    $('#delete-data-button').click(LocalStorage.deleteData);
+    $('#save-data-button').click(LocalStorageSave.saveData);
+    $('#load-data-button').click(LocalStorageLoad.loadData);
+    $('#delete-data-button').click(LocalStorageDelete.deleteData);
   }
 
   function setSaveLoadFileButtons() {
