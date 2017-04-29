@@ -1,42 +1,40 @@
-(function() {
-	"use strict";
+(function () {
+  function insertCosts() {
+    const costs = autoCountCosts($('.cost'));
+    const negativeCosts = autoCountCosts($('#disadv-rows-container, #quirk-rows-container').find('.cost'));
 
-	function insertCosts() {
-		let costs = autoCountCosts($(".cost"));
-		let negativeCosts = autoCountCosts($("#disadv-rows-container, #quirk-rows-container").find(".cost"));
+    checkCostLimit(costs);
 
-		checkCostLimit(costs);
+    $('#costs-total-footer').text(costs);
+    $('#costs-negative-footer').text(negativeCosts);
+  }
 
-		$("#costs-total-footer").text(costs);
-		$("#costs-negative-footer").text(negativeCosts);
-	}
+  function autoCountCosts(costFields) {
+    let costs = 0;
 
-	function autoCountCosts(costFields) {
-		let costs = 0;
+    for (let i = 0; i < costFields.length; i++) {
+      const value = $(costFields[i]).val();
+      const cost = parseInt(value) || 0;
 
-		for (let i = 0; i < costFields.length; i++) {
-			let value = $(costFields[i]).val();
-			let cost = parseInt(value) || 0;
+      costs += cost;
+    }
 
-			costs += cost;
-		}
+    return costs;
+  }
 
-		return costs;
-	}
+  function checkCostLimit(costs) {
+    const limit = parseInt($('.total-gained-points').val());
+    const warning = $('.costs-warning');
 
-	function checkCostLimit(costs) {
-		let limit = parseInt($(".total-gained-points").val());
-		let warning = $(".costs-warning");
+    if (costs > limit) {
+      warning.removeClass('hidden');
+    } else {
+      warning.addClass('hidden');
+    }
+  }
 
-		if (costs > limit) {
-			warning.removeClass("hidden");
-		} else {
-			warning.addClass("hidden");
-		}
-	}
+  const bridge = {};
+  bridge.insertCosts = insertCosts;
 
-	var bridge = {};
-	bridge.insertCosts = insertCosts;
-
-	window.CalculateCosts = bridge;
-})();
+  window.CalculateCosts = bridge;
+}());

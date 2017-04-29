@@ -1,252 +1,249 @@
-(function() {
-	"use strict";
+(function () {
+  const charData = {
+    attr: [],
+    adv: [],
+    perk: [],
+    disadv: [],
+    quirk: [],
+    skill: [],
+    spell: [],
+    equipment: [],
+    notes: {},
+  };
 
-	var charData = {
-		attr: [],
-		adv: [],
-		perk: [],
-		disadv: [],
-		quirk: [],
-		skill: [],
-		spell: [],
-		equipment: [],
-		notes: {},
-	};
+  function saveName() {
+    charData.name = $('#name').val();
+  }
 
+  function saveAttr() {
+    const rows = $('#attr-rows-container').find('.row');
 
-	// SAVE DATA TO LOCAL STORAGE
+    for (let i = 0; i < rows.length; i++) {
+      const row = $(rows[i]);
 
-	function saveData() {
-		localStorage.clear();
+      charData.attr.push({
+        id: row.attr('id'),
+        level: row.find('.level').val() || 0,
+        cost: row.find('.cost').val() || 0,
+      });
+    }
+  }
 
-		saveName();
-		saveAttr();
+  function saveTrait() {
+    const rows = $('#adv-rows-container, #perk-rows-container, #disadv-rows-container, #quirk-rows-container').find('.row');
 
-		saveTrait();
-		saveSkill();
-		saveSpell();
+    for (let i = 0; i < rows.length; i++) {
+      const row = $(rows[i]);
+      const trait = row.data().trait;
 
-		saveEquipment();
-		saveNotes();
-		saveTotalPoints();
+      charData[trait].push({
+        name: row.find('.name').val() || '',
+        cost: row.find('.cost').val() || 0,
+        note: row.find('.note').val() || '',
+      });
+    }
+  }
 
-		localStorage.setItem("charData", JSON.stringify(charData));
+  function saveSkill() {
+    const rows = $('#skill-rows-container').find('.row');
 
-		swal("Saved!", "Your data has been saved.", "success");
-	}
+    for (let i = 0; i < rows.length; i++) {
+      const row = $(rows[i]);
 
-	function saveName() {
-		charData["name"] = $("#name").val();
-	}
+      charData.skill.push({
+        name: row.find('.name').val() || '',
+        type: row.find('.type').val() || '',
+        difficulty: row.find('.difficulty').val() || '',
+        level: row.find('.level').val() || 0,
+        cost: row.find('.cost').val() || 0,
+        note: row.find('.note').val() || '',
+      });
+    }
+  }
 
-	function saveAttr() {
-		let rows = $("#attr-rows-container").find(".row");
+  function saveSpell() {
+    const rows = $('#spell-rows-container').find('.row');
 
-		for (let i = 0; i < rows.length; i++) {
-			let row = $(rows[i]);
+    for (let i = 0; i < rows.length; i++) {
+      const row = $(rows[i]);
 
-			charData["attr"].push({
-				id: row.attr("id"),
-				level: row.find(".level").val() || 0,
-				cost: row.find(".cost").val() || 0,
-			});
-		}
-	}
+      charData.spell.push({
+        name: row.find('.name').val() || '',
+        skill: row.find('.skill').val() || '',
+        type: row.find('.type').val() || '',
+        'time-duration': row.find('.time-duration').val() || '',
+        level: row.find('.level').val() || 0,
+        cost: row.find('.cost').val() || 0,
+        note: row.find('.note').val() || '',
+      });
+    }
+  }
 
-	function saveTrait() {
-		let rows = $("#adv-rows-container, #perk-rows-container, #disadv-rows-container, #quirk-rows-container").find(".row");
+  function saveEquipment() {
+    const rows = $('#equipment-rows-container').find('.row');
 
-		for (let i = 0; i < rows.length; i++) {
-			let row = $(rows[i]);
-			let trait = row.data().trait;
+    for (let i = 0; i < rows.length; i++) {
+      const row = $(rows[i]);
 
-			charData[trait].push({
-				name: row.find(".name").val() || "",
-				cost: row.find(".cost").val() || 0,
-				note: row.find(".note").val() || "",
-			});
-		}
-	}
+      charData.equipment.push({
+        name: row.find('.name').val() || '',
+      });
+    }
+  }
 
-	function saveSkill() {
-		let rows = $("#skill-rows-container").find(".row");
+  function saveNotes() {
+    const notesBox = $('#notes');
 
-		for (let i = 0; i < rows.length; i++) {
-			let row = $(rows[i]);
+    charData.notes = {
+      content: notesBox.val(),
+      width: notesBox.width(),
+      height: notesBox.height(),
+    };
+  }
 
-			charData["skill"].push({
-				name: row.find(".name").val() || "",
-				type: row.find(".type").val() || "",
-				difficulty: row.find(".difficulty").val() || "",
-				level: row.find(".level").val() || 0,
-				cost: row.find(".cost").val() || 0,
-				note: row.find(".note").val() || "",
-			});
-		}
-	}
-
-	function saveSpell() {
-		let rows = $("#spell-rows-container").find(".row");
-
-		for (let i = 0; i < rows.length; i++) {
-			let row = $(rows[i]);
-
-			charData["spell"].push({
-				name: row.find(".name").val() || "",
-				skill: row.find(".skill").val() || "",
-				type: row.find(".type").val() || "",
-				"time-duration": row.find(".time-duration").val() || "",
-				level: row.find(".level").val() || 0,
-				cost: row.find(".cost").val() || 0,
-				note: row.find(".note").val() || "",
-			});
-		}
-	}
-
-	function saveEquipment() {
-		let rows = $("#equipment-rows-container").find(".row");
-
-		for (let i = 0; i < rows.length; i++) {
-			let row = $(rows[i]);
-
-			charData["equipment"].push({
-				name: row.find(".name").val() || "",
-			});
-		}
-	}
-
-	function saveNotes() {
-		let notesBox = $("#notes");
-
-		charData.notes = {
-			content: notesBox.val(),
-			width: notesBox.width(),
-			height: notesBox.height(),
-		}
-	}
-
-	function saveTotalPoints() {
-		charData.totalPoints = $(".total-gained-points").val();
-	}
+  function saveTotalPoints() {
+    charData.totalPoints = $('.total-gained-points').val();
+  }
 
 
 	// LOAD DATA FROM LOCAL STORAGE
 
-	function loadData() {
-		let storageData = localStorage.getItem("charData");
+  function loadData() {
+    const storageData = localStorage.getItem('charData');
 
-		if (!storageData) {
-			swal("No Local Storage Data found.")
-			return;
-		}
+    if (!storageData) {
+      swal('No Local Storage Data found.');
+      return;
+    }
 
-		insertData(toValidJSON(storageData));
+    insertData(toValidJSON(storageData));
 
-		CalculateCosts.insertCosts();
+    CalculateCosts.insertCosts();
 
-		swal("Fetched!", "Your data has been fetched.", "success");
-	}
+    swal('Fetched!', 'Your data has been fetched.', 'success');
+  }
 
-	function toValidJSON(data) {
+  function toValidJSON(data) {
 		// change newlines from \n to \\n; see http://stackoverflow.com/a/29666086/5362524
-		return JSON.parse(data.replace(/\n/g, "\\n"));
-	}
+    return JSON.parse(data.replace(/\n/g, '\\n'));
+  }
 
-	function insertData(data) {
-		insertName(data.name);
-		insertAttr(data.attr);
+  function insertData(data) {
+    insertName(data.name);
+    insertAttr(data.attr);
 
-		insertTraits(data);
+    insertTraits(data);
 
-		insertNotes(data.notes);
-		insertTotalPoints(data.totalPoints);
-	}
+    insertNotes(data.notes);
+    insertTotalPoints(data.totalPoints);
+  }
 
-	function insertName(name) {
-		$("#name").val(name);
-	}
+  function insertName(name) {
+    $('#name').val(name);
+  }
 
-	function insertAttr(attrData) {
-		for (let i = 0; i < attrData.length; i++) {
-			let data = attrData[i];
-			let row = $(`#${data.id}`);
+  function insertAttr(attrData) {
+    for (let i = 0; i < attrData.length; i++) {
+      const data = attrData[i];
+      const row = $(`#${data.id}`);
 
-			row.find(".level").val(data.level);
-			row.find(".cost").val(data.cost);
-		}
-	}
+      row.find('.level').val(data.level);
+      row.find('.cost').val(data.cost);
+    }
+  }
 
-	function insertTraits(data) {
-		const TRAITS = ["adv", "perk", "disadv", "quirk", "skill", "spell", "equipment"];
+  function insertTraits(data) {
+    const TRAITS = ['adv', 'perk', 'disadv', 'quirk', 'skill', 'spell', 'equipment'];
 
-		for (let prop in data) {
-			if (TRAITS.includes(prop)) {
-				insertTrait(prop, data[prop]);
-			}
-		}
-	}
+    for (const prop in data) {
+      if (TRAITS.includes(prop)) {
+        insertTrait(prop, data[prop]);
+      }
+    }
+  }
 
-	function insertTrait(trait, traitData) {
-		let box = $(`#${trait}-rows-container`);
-		box.empty();
+  function insertTrait(trait, traitData) {
+    const box = $(`#${trait}-rows-container`);
+    box.empty();
 
-		for (let i = 0; i < traitData.length; i++) {
-			AddRows.addTraitRow(trait);
+    for (let i = 0; i < traitData.length; i++) {
+      AddRows.addTraitRow(trait);
 
-			let row = box.find(`#${trait}-row${i}`);
-			let data = traitData[i];
+      const row = box.find(`#${trait}-row${i}`);
+      const data = traitData[i];
 
-			for (let prop in data) {
-				row.find(`.${prop}`).val(data[prop]);
+      for (const prop in data) {
+        row.find(`.${prop}`).val(data[prop]);
 
-				if (prop === "note" && data[prop].length) {
-					row.find(".note").removeClass("hidden");
-					row.find(".toggle-note-button").text("‒");
-				}
-			}
-		}
-	}
+        if (prop === 'note' && data[prop].length) {
+          row.find('.note').removeClass('hidden');
+          row.find('.toggle-note-button').text('‒');
+        }
+      }
+    }
+  }
 
-	function insertNotes(notes) {
-		$("#notes")
+  function insertNotes(notes) {
+    $('#notes')
 			.val(notes.content)
 			.width(notes.width)
 			.height(notes.height);
-	}
+  }
 
-	function insertTotalPoints(totalPoints) {
-		$(".total-gained-points").val(totalPoints);
-	}
+  function insertTotalPoints(totalPoints) {
+    $('.total-gained-points').val(totalPoints);
+  }
 
 
 	// DELETE LOCAL STORAGE DATA
 
-	function deleteData() {
-		swal({
-			title: "Are you sure?",
-			text: "You will not be able to recover your character data!",
-			type: "warning",
-			showCancelButton: true,
-			confirmButtonColor: "#DD6B55",
-			confirmButtonText: "Yes, delete it!",
-			cancelButtonText: "No, cancel please!",
-			closeOnConfirm: false,
-			closeOnCancel: true
-		}, (isConfirmed) => {
-			if (!isConfirmed) {
-				return;
-			}
+  function deleteData() {
+    swal({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover your character data!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#DD6B55',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel please!',
+      closeOnConfirm: false,
+      closeOnCancel: true,
+    }, (isConfirmed) => {
+      if (!isConfirmed) {
+        return;
+      }
 
-			localStorage.clear();
-			swal("Deleted!", "Your character data has been deleted.", "success");
-		});
-	}
+      localStorage.clear();
+      swal('Deleted!', 'Your character data has been deleted.', 'success');
+    });
+  }
 
+	// SAVE DATA TO LOCAL STORAGE
 
-	var bridge = {};
-	bridge.saveData = saveData;
-	bridge.loadData = loadData;
-	bridge.deleteData = deleteData;
+  function saveData() {
+    localStorage.clear();
 
-	window.LocalStorage = bridge;
-})();
+    saveName();
+    saveAttr();
+
+    saveTrait();
+    saveSkill();
+    saveSpell();
+
+    saveEquipment();
+    saveNotes();
+    saveTotalPoints();
+
+    localStorage.setItem('charData', JSON.stringify(charData));
+
+		console.log('Saved data:', JSON.stringify(charData));
+
+    swal('Saved!', 'Your data has been saved.', 'success');
+  }
+
+  window.LocalStorage = {
+    saveData,
+    loadData,
+    deleteData,
+  };
+}());
