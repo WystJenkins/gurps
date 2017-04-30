@@ -31,20 +31,15 @@
 						<button type="button" class="setgetbuttons" id="delete-data-button">⌫ Delete Character Data</button>
 					</div>
 					<div class="col-xs-3">
-						<button type="button" class="printbuttons" onclick="window.print();return false;">&#128438; Print as PDF</button>
+						<button type="button" class="printbuttons" onclick="window.print();return false;">🖨️ Print as PDF</button>
 					</div>
 				</div>
 			</div>
 
 			<div class="saveload-button-wrapper">
 				<div class="row">
-					<div class="col-xs-6">
-						<span class="saveload-text">Save File:</span>
-						<input type="text" id="input-file-name" class="saveload-file">
-					</div>
-					<div class="col-xs-2">
-						<br/>
-						<button id="save-file-as-text" class="saveload-buttons">Save as Textfile</button>
+					<div class="col-xs-3">
+						<button id="save-file-as-text" class="saveload-buttons">📃 Save as Textfile</button>
 					</div>
 				</div>
 
@@ -627,6 +622,7 @@
 <script src="libraries/jquery-3.1.1.min.js"></script>
 <script src="libraries/bootstrap/bootstrap.js"></script>
 <script src="libraries/sweetalert-master/dist/sweetalert.min.js"></script>
+<script src="libraries/FileSaver/FileSaver.min.js"></script>
 
 <script type="text/javascript" src="js/calculate-costs.js"></script>
 <script type="text/javascript" src="js/category-rows.js"></script>
@@ -634,4 +630,6 @@
 <script type="text/javascript" src="js/local-storage-delete.js"></script>
 <script type="text/javascript" src="js/local-storage-save.js"></script>
 <script type="text/javascript" src="js/local-storage-load.js"></script>
+<script type="text/javascript" src="js/file-saver.js"></script>
+<script type="text/javascript" src="js/file-loader.js"></script>
 <script type="text/javascript" src="js/main.js"></script>

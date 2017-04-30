@@ -36,7 +36,7 @@
   function setListeners() {
     setAddRemoveButtons();
     setLocalStorageButtons();
-    setSaveLoadFileButtons();
+    setSaveLoadAsTextFileButtons();
     setHideCategoryButtons();
     setSortCategoryButtons();
     setCostTotalCount();
@@ -86,17 +86,15 @@
     const trait = $(this).data().trait;
     const container = `#${trait}-rows-container`;
 
-    $(`${container} .row`)
-			.sort((a, b) => {
-  const nameA = $(a).find('.name').val().toLowerCase();
-  const nameB = $(b).find('.name').val().toLowerCase();
+    $(`${container} .row`).sort((a, b) => {
+      const nameA = $(a).find('.name').val().toLowerCase();
+      const nameB = $(b).find('.name').val().toLowerCase();
 
-  if (!nameA) return 1;
-  else if (!nameB) return -1;
+      if (!nameA) return 1;
+      else if (!nameB) return -1;
 
-  return nameA.localeCompare(nameB);
-})
-			.appendTo(container);
+      return nameA.localeCompare(nameB);
+    }).appendTo(container);
   }
 
   function setCostTotalCount() {
@@ -110,16 +108,9 @@
     $('#delete-data-button').click(LocalStorageDelete.deleteData);
   }
 
-  function setSaveLoadFileButtons() {
-		/*
-		//save and load data as text file
-		$("#save-file-as-text").click(() => {
-			saveTextAsFile();
-		});
-		$("#load-file-as-text").click(() => {
-			loadFileAsText();
-		});
-		*/
+  function setSaveLoadAsTextFileButtons() {
+    $('#save-file-as-text').click(FileSaver.save);
+    $('#load-file-as-text').click(FileLoader.load);
   }
 
   window.initPage = initPage;

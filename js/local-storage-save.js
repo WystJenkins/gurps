@@ -1,15 +1,5 @@
 (function () {
-  const charData = {
-    attr: [],
-    adv: [],
-    perk: [],
-    disadv: [],
-    quirk: [],
-    skill: [],
-    spell: [],
-    equipment: [],
-    notes: {},
-  };
+  let charData;
 
   function saveName() {
     charData.name = $('#name').val();
@@ -109,8 +99,18 @@
 		charData.magicalAptitude = $('#magical-aptitude-lvl').val();
   }
 
-  function saveData() {
-    localStorage.clear();
+  function createCharJSON() {
+    charData = {
+      attr: [],
+      adv: [],
+      perk: [],
+      disadv: [],
+      quirk: [],
+      skill: [],
+      spell: [],
+      equipment: [],
+      notes: {},
+    };
 
     saveName();
     saveAttr();
@@ -124,14 +124,23 @@
     saveNotes();
     saveTotalPoints();
 
-    localStorage.setItem('charData', JSON.stringify(charData));
+    console.log('charData', JSON.stringify(charData));
 
-    console.log('Saved data:', JSON.stringify(charData));
+    return charData;
+  }
+
+  function saveData() {
+    localStorage.clear();
+
+    createCharJSON();
+
+    localStorage.setItem('charData', JSON.stringify(charData));
 
     swal('Saved!', 'Your data has been saved.', 'success');
   }
 
   window.LocalStorageSave = {
     saveData,
+    createCharJSON,
   };
 }());

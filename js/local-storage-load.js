@@ -94,5 +94,6 @@
 
   window.LocalStorageLoad = {
     loadData,
+    insertData,
   };
 }());
