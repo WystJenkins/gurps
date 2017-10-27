@@ -1,6 +1,6 @@
 (() => {
   function load() {
-    const fileToLoad = $('#file-to-load').files[0];
+    const fileToLoad = document.getElementById('file-to-load').files[0];
 
     const fileReader = new FileReader();
     fileReader.onload = (fileLoadedEvent) => {
