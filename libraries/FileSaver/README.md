@@ -32,6 +32,7 @@ Supported browsers
 | Opera < 15     | data: URI     | No           | n/a           | [Blob.js](https://github.com/eligrey/Blob.js) |
 | Safari 6.1+*   | Blob          | No           | ?             | None         |
 | Safari < 6     | data: URI     | No           | n/a           | [Blob.js](https://github.com/eligrey/Blob.js) |
+| Safari 10.1+   | Blob          | Yes          | n/a           | None         |
 
 Feature detection is possible:
 
@@ -67,7 +68,7 @@ Pass `true` for `disableAutoBOM` if you don't want FileSaver.js to automatically
 Examples
 --------
 
-### Saving text using with require
+### Saving text using require
 ```js
 var FileSaver = require('file-saver');
 var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
