@@ -908,3 +908,59 @@ div.tooltip-symbol,
   font-family: 'Open Sans', sans-serif, Georgia, "Times New Roman", Times, serif; }
 
 /*# sourceMappingURL=main.css.map */
+
+
+/*------------------------------------------------*/
+/* PRINT VERSION QUICKFIXES                       */
+/*------------------------------------------------*/
+
+@media print {
+  .headline {display: none}
+
+  .row {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .attr2-name,
+  .damage-name,
+  .damage-formula,
+  .skill-type,
+  .skill-difficulty,
+  .col-xs-1,
+  .col-xs-2,
+  .col-xs-3
+   {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    height: auto !important;
+  }
+ 
+  select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	text-indent: 1px;
+	text-overflow: '';
+	height: auto;
+  }
+
+  .attr-row > div,
+  .attr2-row > div,
+  .damage-row > div  {
+    width: 150px
+  }
+
+  .skill-container .col-xs-2,
+  .spell-container .col-xs-2 {
+    width: auto;
+  }
+
+  .skill-container .skill-row,
+  .spell-container .spell-row {
+   border-bottom: 1px dotted #ccc !important;
+  }
+
+  #magical-aptitude-lvl {
+    width: auto;
+  }
+}
