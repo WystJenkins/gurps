@@ -5,8 +5,8 @@
     charData.name = $('#name').val();
   }
 
-  function saveAttr() {
-    const rows = $('#attr-rows-container').find('.row');
+  function saveAttr(container) {
+    const rows = $(container).find('.row');
 
     for (let i = 0; i < rows.length; i++) {
       const row = $(rows[i]);
@@ -113,7 +113,10 @@
     };
 
     saveName();
-    saveAttr();
+
+    saveAttr('#attr-rows-container');
+    saveAttr('#attr2-rows-container');
+
     saveMagicalAptitude();
 
     saveTrait();
